@@ -14,4 +14,8 @@
     <artifactId>EasyDB</artifactId>
     <version>1.0.0</version>
 
+    <name>EasyDB</name>
+    <description>轻量级Java数据库框架</description>
+    <url>https://github.com/BProbie/EasyDB</url>
+
 </project>
