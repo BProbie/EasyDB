@@ -160,7 +160,7 @@ EasyDB.getInstance().getLocalDatabaseFactory()
 
 <dependencies>
     <dependency>
-        <groupId>com.github.BProbie</groupId>
+        <groupId>com.probie</groupId>
         <artifactId>EasyDB</artifactId>
         <version>1.0.0</version> <!-- 与GitHub Release标签一致 -->
     </dependency>
@@ -169,12 +169,12 @@ EasyDB.getInstance().getLocalDatabaseFactory()
 
 #### **2. Gradle (Kotlin DSL)**
 ```kotlin
-implementation("com.probie:easydb:1.0.0")
+implementation("com.probie:EasyDB:1.0.0")
 ```
 
 #### **3. Manual JAR Download**
 ```bash
-wget https://github.com/BProbie/EasyDB/releases/download/v1.0.0/easydb-1.0.0.jar
+wget https://github.com/BProbie/EasyDB/releases/EasyDB-1.0.0.jar
 ```
 
 #### **4. Source Code Integration**
