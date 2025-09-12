@@ -10,6 +10,13 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
+    <repositories>
+        <repository>
+            <id>jitpack.io</id>
+            <url>https://jitpack.io</url>
+        </repository>
+    </repositories>
+
     <groupId>com.github.BProbie</groupId>
     <artifactId>EasyDB</artifactId>
     <version>1.0.0</version>
