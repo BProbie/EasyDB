@@ -4,9 +4,10 @@ package com.probie;
  * Information
  *
  * api-name: EasyDB
- * api-version: 1.0
+ * api-version: 1.0.0
  * api-language: java (JDK-21.0.8)
  * api-dependence: null
+ * api-dependence-manager: maven
  *
  * @author probie
  * github: https://github.com/BProbie
@@ -15,6 +16,11 @@ package com.probie;
 public class Main {
 
     public static void main(String[] args) {
+
+    }
+
+//    public static void main(String[] args) {
+
 //        EG!
 
 //        本地数据库
@@ -28,7 +34,7 @@ public class Main {
 //        }
 
 //        本地远程数据库
-//        LocalRemoteDB localRemoteDB = EasyDB.getInstance().getLocalDatabaseFactory().buildLocalRemoteDB("https://raw.githubusercontent.com/BProbie/EasyDB/refs/heads/main/EasyDB.db");
+//        LocalRemoteDB localRemoteDB = EasyDB.getInstance().getLocalDatabaseFactory().buildLocalRemoteDB("https://raw.githubusercontent.com/BProbie/EasyDB/refs/heads/master/EasyDB.db");
 //        localRemoteDB.downloadDatabase();
 //        if (localRemoteDB.connect()) {
 //            localRemoteDB.set("date","yes");
@@ -40,8 +46,6 @@ public class Main {
 
 //        TODO
 
-
-
-    }
+//    }
 
 }

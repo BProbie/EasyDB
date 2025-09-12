@@ -7,7 +7,7 @@ public class LocalDatabaseFactory implements ILocalDatabaseFactory {
     private static LocalDatabaseFactory INSTANCE = new LocalDatabaseFactory();
 
     /**
-     * 获取一个LocalDatabase单例对象
+     * 获取一个LocalDatabaseFactory单例对象
      * */
     public static LocalDatabaseFactory getInstance() {
         return INSTANCE;
