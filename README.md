@@ -188,25 +188,25 @@ cd EasyDB && mvn clean install
 ```java
 import com.probie.EasyDB;
 import com.probie.Database.Local.LocalDB;
-import com.probie.Database.Data.Data;
+import com.probie.DataPacket.Data;
 
 public class QuickStart {
     public static void main(String[] args) {
         // ⚡ Create database in one line
         LocalDB db = EasyDB.getInstance()
-            .getLocalDatabaseFactory()
-            .buildLocalDB()
-            .setFilePath("./myapp.db")
-            .setComment("My Application Database");
-        
+                .getLocalDatabaseFactory()
+                .buildLocalDB()
+                .setFilePath("./myapp.db")
+                .setComment("My Application Database");
+
         // 🎯 Store any object
         db.set("user:123", new Data()
-            .put("name", "Alice")
-            .put("email", "alice@example.com")
-            .put("preferences", new Data()
-                .put("theme", "dark")
-                .put("notifications", true)));
-        
+                .put("name", "Alice")
+                .put("email", "alice@example.com")
+                .put("preferences", new Data()
+                        .put("theme", "dark")
+                        .put("notifications", true)));
+
         // 🔄 Retrieve and use
         Data user = new Data().deCode(db.get("user:123"));
         System.out.println("Welcome back, " + user.get("name"));

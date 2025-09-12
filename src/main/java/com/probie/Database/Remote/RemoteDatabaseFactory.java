@@ -13,4 +13,9 @@ public class RemoteDatabaseFactory implements IRemoteDatabaseFactory {
         return INSTANCE;
     }
 
+    @Override
+    public RemoteDB buildRemoteDB() {
+        return new RemoteDB();
+    }
+
 }

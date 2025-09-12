@@ -1,7 +1,7 @@
 package com.probie.Database.Local;
 
 import java.util.ArrayList;
-import com.probie.Database.Data.Data;
+import com.probie.DataPacket.Data;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 import com.probie.Database.Local.Interface.ILocalDatabase;
