@@ -151,11 +151,20 @@ EasyDB.getInstance().getLocalDatabaseFactory()
 
 #### **1. Maven Central (Recommended)**
 ```xml
-<dependency>
-    <groupId>com.probie</groupId>
-    <artifactId>easydb-core</artifactId>
-    <version>1.0.0</version>
-</dependency>
+<repositories>
+    <repository>
+        <id>jitpack.io</id>
+        <url>https://jitpack.io</url>
+    </repository>
+</repositories>
+
+<dependencies>
+    <dependency>
+        <groupId>com.github.BProbie</groupId>
+        <artifactId>EasyDB</artifactId>
+        <version>v1.0.0</version> <!-- 与GitHub Release标签一致 -->
+    </dependency>
+</dependencies>
 ```
 
 #### **2. Gradle (Kotlin DSL)**
