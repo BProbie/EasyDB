@@ -10,19 +10,12 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
-    <repositories>
-        <repository>
-            <id>jitpack.io</id>
-            <url>https://jitpack.io</url>
-        </repository>
-    </repositories>
-
     <groupId>com.github.BProbie</groupId>
     <artifactId>EasyDB</artifactId>
     <version>1.0.0</version>
 
     <name>EasyDB</name>
-    <description>企业级轻量级Java数据库框架</description>
+    <description>轻量级Java数据库框架</description>
     <url>https://github.com/BProbie/EasyDB</url>
 
 </project>
