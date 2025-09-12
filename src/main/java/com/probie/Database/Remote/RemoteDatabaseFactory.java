@@ -6,6 +6,9 @@ public class RemoteDatabaseFactory implements IRemoteDatabaseFactory {
 
     private static RemoteDatabaseFactory INSTANCE = new RemoteDatabaseFactory();
 
+    /**
+     * 获取一个RemoteDatabaseFactory单例对象
+     * */
     public static RemoteDatabaseFactory getInstance() {
         return INSTANCE;
     }
