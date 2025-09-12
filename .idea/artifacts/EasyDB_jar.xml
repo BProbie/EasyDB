@@ -1,0 +1,11 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="EasyDB:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/EasyDB_jar</output-path>
+    <root id="archive" name="EasyDB.jar">
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/META-INF/MANIFEST.MF" />
+      </element>
+      <element id="module-output" name="EasyDB" />
+    </root>
+  </artifact>
+</component>
