@@ -10,7 +10,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
-    <groupId>com.probie</groupId>
+    <groupId>com.github.BProbie</groupId>
     <artifactId>EasyDB</artifactId>
     <version>1.0.0</version>
 
