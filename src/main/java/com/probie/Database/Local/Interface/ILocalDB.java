@@ -17,7 +17,7 @@ public interface ILocalDB {
     /**
      * 回滚到上一次提交
      * */
-    Boolean backroll();
+    Boolean rollback();
 
     /**
      * 自动提交

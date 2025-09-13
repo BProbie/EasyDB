@@ -1,6 +1,7 @@
 package com.probie.Database.Remote.Interface;
 
 import com.probie.Database.Remote.RemoteDB;
+import com.probie.Database.Remote.Supabase;
 
 public interface IRemoteDatabaseFactory {
 
@@ -8,5 +9,10 @@ public interface IRemoteDatabaseFactory {
      * 构造一远程数据库
      * */
     RemoteDB buildRemoteDB();
+
+    /**
+     * 构造一Supabase数据库
+     * */
+    Supabase buildSupabase();
 
 }

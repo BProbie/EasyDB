@@ -18,4 +18,9 @@ public class RemoteDatabaseFactory implements IRemoteDatabaseFactory {
         return new RemoteDB();
     }
 
+    @Override
+    public Supabase buildSupabase() {
+        return new Supabase();
+    }
+
 }

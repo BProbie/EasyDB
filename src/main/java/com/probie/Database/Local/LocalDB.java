@@ -39,7 +39,7 @@ public class LocalDB extends LocalDatabase implements ILocalDB, Serializable, Cl
     }
 
     @Override
-    public Boolean backroll() {
+    public Boolean rollback() {
         getWriteLock().lock();
         setProperties(getTempProperties());
         getWriteLock().unlock();
