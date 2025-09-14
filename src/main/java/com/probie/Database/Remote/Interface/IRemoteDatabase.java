@@ -1,5 +1,6 @@
 package com.probie.Database.Remote.Interface;
 
+import java.sql.ResultSet;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.util.concurrent.locks.Lock;
@@ -22,13 +23,31 @@ public interface IRemoteDatabase {
      * */
     PreparedStatement getPreparedStatement(String preparedStatementCommand);
     PreparedStatement getPreparedStatement(String preparedStatementCommand, Object... values);
+    PreparedStatement getPreparedStatement(PreparedStatement preparedStatement, Object... values);
 
     /**
-     * execute 执行PreparedStatement
+     * execute执行PreparedStatement
      * */
-    Boolean runPreparedStatementCommand(PreparedStatement preparedStatementCommand);
-    Boolean runPreparedStatementCommand(String preparedStatementCommand);
-    Boolean runPreparedStatementCommand(String preparedStatementCommand, Object... values);
+    Boolean runPreparedStatementExecute(PreparedStatement preparedStatement);
+    Boolean runPreparedStatementExecute(PreparedStatement preparedStatement, Object... values);
+    Boolean runPreparedStatementExecute(String preparedStatementCommand);
+    Boolean runPreparedStatementExecute(String preparedStatementCommand, Object... values);
+
+    /**
+     * update执行PreparedStatement
+     * */
+    int runPreparedStatementUpdate(PreparedStatement preparedStatement);
+    int runPreparedStatementUpdate(PreparedStatement preparedStatement, Object... values);
+    int runPreparedStatementUpdate(String preparedStatementCommand);
+    int runPreparedStatementUpdate(String preparedStatementCommand, Object... values);
+
+    /**
+     * query执行PreparedStatement
+     * */
+    ResultSet runPreparedStatementQuery(PreparedStatement preparedStatement);
+    ResultSet runPreparedStatementQuery(PreparedStatement preparedStatement, Object... values);
+    ResultSet runPreparedStatementQuery(String preparedStatementCommand);
+    ResultSet runPreparedStatementQuery(String preparedStatementCommand, Object... values);
 
     /**
      * 获取读锁和写锁

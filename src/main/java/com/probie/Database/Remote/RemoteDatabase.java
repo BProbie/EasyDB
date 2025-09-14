@@ -1,11 +1,8 @@
 package com.probie.Database.Remote;
 
+import java.sql.*;
 import java.io.Closeable;
-import java.sql.Connection;
 import java.io.Serializable;
-import java.sql.SQLException;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 import com.probie.Database.Remote.Interface.IRemoteDatabase;
@@ -88,14 +85,26 @@ public class RemoteDatabase implements IRemoteDatabase, Serializable, Closeable 
     }
 
     @Override
-    public Boolean runPreparedStatementCommand(PreparedStatement preparedStatementCommand) {
+    public PreparedStatement getPreparedStatement(PreparedStatement preparedStatement, Object... values) {
+        for (int i = 0; i < values.length; i++) {
+            try {
+                preparedStatement.setString(i, values[i].toString());
+            } catch (SQLException sqlException) {
+                throw new RuntimeException(sqlException);
+            }
+        }
+        return preparedStatement;
+    }
+
+    @Override
+    public Boolean runPreparedStatementExecute(PreparedStatement preparedStatement) {
         try {
-            if (!preparedStatementCommand.isClosed()) {
+            if (!preparedStatement.isClosed()) {
                 getWriteLock().lock();
-                Boolean isRun = preparedStatementCommand.execute();
+                Boolean isExecute = preparedStatement.execute();
                 getWriteLock().unlock();
-                preparedStatementCommand.close();
-                return isRun;
+                preparedStatement.close();
+                return isExecute;
             }
         } catch (SQLException sqlException) {
             throw new RuntimeException(sqlException);
@@ -104,13 +113,72 @@ public class RemoteDatabase implements IRemoteDatabase, Serializable, Closeable 
     }
 
     @Override
-    public Boolean runPreparedStatementCommand(String preparedStatementCommand) {
-        return runPreparedStatementCommand(getPreparedStatement(preparedStatementCommand));
+    public Boolean runPreparedStatementExecute(PreparedStatement preparedStatement, Object... values) {
+        return runPreparedStatementExecute(getPreparedStatement(preparedStatement, values));
     }
 
     @Override
-    public Boolean runPreparedStatementCommand(String preparedStatementCommand, Object... values) {
-        return runPreparedStatementCommand(getPreparedStatement(preparedStatementCommand, values));
+    public Boolean runPreparedStatementExecute(String preparedStatementCommand) {
+        return runPreparedStatementExecute(getPreparedStatement(preparedStatementCommand));
+    }
+
+    @Override
+    public Boolean runPreparedStatementExecute(String preparedStatementCommand, Object... values) {
+        return runPreparedStatementExecute(getPreparedStatement(preparedStatementCommand, values));
+    }
+
+    @Override
+    public int runPreparedStatementUpdate(PreparedStatement preparedStatement) {
+        try {
+            getWriteLock().lock();
+            int updateCount = preparedStatement.executeUpdate();
+            getWriteLock().unlock();
+            return updateCount;
+        } catch (SQLException sqlException) {
+            throw new RuntimeException(sqlException);
+        }
+    }
+
+    @Override
+    public int runPreparedStatementUpdate(PreparedStatement preparedStatement, Object... values) {
+        return runPreparedStatementUpdate(getPreparedStatement(preparedStatement, values));
+    }
+
+    @Override
+    public int runPreparedStatementUpdate(String preparedStatementCommand) {
+        return runPreparedStatementUpdate(getPreparedStatement(preparedStatementCommand));
+    }
+
+    @Override
+    public int runPreparedStatementUpdate(String preparedStatementCommand, Object... values) {
+        return runPreparedStatementUpdate(getPreparedStatement(preparedStatementCommand, values));
+    }
+
+    @Override
+    public ResultSet runPreparedStatementQuery(PreparedStatement preparedStatement) {
+        try {
+            getReadLock().lock();
+            ResultSet resultSet = preparedStatement.executeQuery();
+            getReadLock().unlock();
+            return resultSet;
+        } catch (SQLException sqlException) {
+            throw new RuntimeException(sqlException);
+        }
+    }
+
+    @Override
+    public ResultSet runPreparedStatementQuery(PreparedStatement preparedStatement, Object... values) {
+        return runPreparedStatementQuery(getPreparedStatement(preparedStatement, values));
+    }
+
+    @Override
+    public ResultSet runPreparedStatementQuery(String preparedStatementCommand) {
+        return runPreparedStatementQuery(getPreparedStatement(preparedStatementCommand));
+    }
+
+    @Override
+    public ResultSet runPreparedStatementQuery(String preparedStatementCommand, Object... values) {
+        return runPreparedStatementQuery(getPreparedStatement(preparedStatementCommand, values));
     }
 
     @Override

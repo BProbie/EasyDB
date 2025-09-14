@@ -16,13 +16,13 @@ package com.probie;
 public class Main {
 
     public static void main(String[] args) {
-        
+
     }
 
 //    public static void main(String[] args) {
-
+//
 //        EG!
-
+//
 //        本地数据库
 //        LocalDB localDB = EasyDB.getInstance().getLocalDatabaseFactory().buildLocalDB().setComment("localDB");
 //        if (localDB.connect()) {
@@ -32,7 +32,7 @@ public class Main {
 //            System.out.println(localDB.get("date"));
 //            System.out.println(new Data().deCode(localDB.get("probie")));
 //        }
-
+//
 //        本地远程数据库
 //        LocalRemoteDB localRemoteDB = EasyDB.getInstance().getLocalDatabaseFactory().buildLocalRemoteDB("https://raw.githubusercontent.com/BProbie/EasyDB/refs/heads/master/EasyDB.db");
 //        localRemoteDB.downloadDatabase();
@@ -43,9 +43,17 @@ public class Main {
 //            System.out.println(localRemoteDB.get("date"));
 //            System.out.println(new Data().deCode(localRemoteDB.get("probie")));
 //        }
-
+//
+//        远程数据库
+//        RemoteDB remoteDB = EasyDB.getInstance().getRemoteDatabaseFactory().buildRemoteDB();
+//        remoteDB.runPreparedStatementExecute("");
+//
+//        远程Supabase数据库
+//        Supabase supabase = EasyDB.getInstance().getRemoteDatabaseFactory().buildSupabase();
+//        supabase.runPreparedStatementUpdate("");
+//
 //        TODO
-
+//
 //    }
 
 }
