@@ -5,12 +5,15 @@ import com.probie.Database.Remote.RemoteDatabaseFactory;
 
 public class EasyDB {
 
-    private static EasyDB INSTANCE = new EasyDB();
+    private volatile static EasyDB INSTANCE;
 
     /**
      * 获取EasyDB的单例对象
      * */
-    public static EasyDB getInstance() {
+    public synchronized static EasyDB getInstance() {
+        if (INSTANCE == null) {
+            INSTANCE = new EasyDB();
+        }
         return INSTANCE;
     }
 

@@ -4,12 +4,15 @@ import com.probie.Database.Local.Interface.ILocalDatabaseFactory;
 
 public class LocalDatabaseFactory implements ILocalDatabaseFactory {
 
-    private static LocalDatabaseFactory INSTANCE = new LocalDatabaseFactory();
+    private volatile static LocalDatabaseFactory INSTANCE;
 
     /**
      * 获取一个LocalDatabaseFactory单例对象
      * */
-    public static LocalDatabaseFactory getInstance() {
+    public synchronized static LocalDatabaseFactory getInstance() {
+        if (INSTANCE == null) {
+            INSTANCE = new LocalDatabaseFactory();
+        }
         return INSTANCE;
     }
 

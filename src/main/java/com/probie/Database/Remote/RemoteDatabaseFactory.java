@@ -4,12 +4,15 @@ import com.probie.Database.Remote.Interface.IRemoteDatabaseFactory;
 
 public class RemoteDatabaseFactory implements IRemoteDatabaseFactory {
 
-    private static RemoteDatabaseFactory INSTANCE = new RemoteDatabaseFactory();
+    private volatile static RemoteDatabaseFactory INSTANCE;
 
     /**
      * 获取一个RemoteDatabaseFactory单例对象
      * */
-    public static RemoteDatabaseFactory getInstance() {
+    public synchronized static RemoteDatabaseFactory getInstance() {
+        if (INSTANCE == null) {
+            INSTANCE = new RemoteDatabaseFactory();
+        }
         return INSTANCE;
     }
 
