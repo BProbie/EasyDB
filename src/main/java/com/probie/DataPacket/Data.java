@@ -7,8 +7,6 @@ import com.probie.DataPacket.Interface.IData;
 
 public class Data extends DataPacket implements IData, Cloneable {
 
-    private HashMap<Object, Object> hashMap = new HashMap<>();
-
     @Override
     public Data put(Object key, Object value) {
         getHashMap().put(key, value);
@@ -157,7 +155,7 @@ public class Data extends DataPacket implements IData, Cloneable {
     @Override
     public String toString() {
         return "Data{" +
-                "hashMap=" + hashMap +
+                "hashMap=" + getHashMap() +
                 '}';
     }
 
