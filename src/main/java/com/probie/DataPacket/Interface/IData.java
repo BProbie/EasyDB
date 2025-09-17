@@ -34,7 +34,7 @@ public interface IData {
     Data remove(Object[] keys, Object[] values);
 
     /**
-     * 对象加密解密
+     * 对象加编码解码
      * */
     Object enCode();
     Data deCode(Object object);
