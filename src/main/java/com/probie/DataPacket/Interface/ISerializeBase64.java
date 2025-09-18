@@ -6,7 +6,7 @@ import java.util.Base64;
 public interface ISerializeBase64 {
 
     /**
-     * 加密: Object -> 序列化 -> Base64编码 -> 转String
+     * 编码: Object -> 序列化 -> Base64编码 -> 转String
      * @param object 任意对象
      * */
     default Object enSerializeToBase64(Object object) {
@@ -20,7 +20,7 @@ public interface ISerializeBase64 {
     }
 
     /**
-     * 解密: String -> Byte -> Base64解码 -> 反序列化 -> Object
+     * 解码: String -> Byte -> Base64解码 -> 反序列化 -> Object
      * @param object 任意数据
      * */
     default Object deSerializeFromBase64(Object object) {
