@@ -20,8 +20,11 @@ public class LocalDB extends LocalDatabase implements ILocalDB, Serializable, Cl
         try {
             getReadLock().lock();
             getProperties().load(new InputStreamReader(new FileInputStream(getFilePath()), StandardCharsets.UTF_8));
+        } catch (IOException ignored) {
+
+        } finally {
             getReadLock().unlock();
-        } catch (IOException ignored) {}
+        }
         return new File(getFilePath()).exists();
     }
 
@@ -31,9 +34,10 @@ public class LocalDB extends LocalDatabase implements ILocalDB, Serializable, Cl
         try {
             getWriteLock().lock();
             getProperties().store(new FileWriter(getFilePath()), getComment());
-            getWriteLock().unlock();
         } catch (IOException ioException) {
             throw new RuntimeException(ioException);
+        } finally {
+            getWriteLock().unlock();
         }
         return new File(getFilePath()).exists();
     }

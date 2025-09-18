@@ -132,10 +132,11 @@ public class RemoteDatabase implements IRemoteDatabase, Serializable, Closeable 
         try {
             getWriteLock().lock();
             int updateCount = preparedStatement.executeUpdate();
-            getWriteLock().unlock();
             return updateCount;
         } catch (SQLException sqlException) {
             throw new RuntimeException(sqlException);
+        } finally {
+            getWriteLock().unlock();
         }
     }
 
@@ -159,10 +160,11 @@ public class RemoteDatabase implements IRemoteDatabase, Serializable, Closeable 
         try {
             getReadLock().lock();
             ResultSet resultSet = preparedStatement.executeQuery();
-            getReadLock().unlock();
             return resultSet;
         } catch (SQLException sqlException) {
             throw new RuntimeException(sqlException);
+        } finally {
+            getReadLock().unlock();
         }
     }
 
