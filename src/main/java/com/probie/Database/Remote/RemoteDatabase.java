@@ -30,14 +30,13 @@ public class RemoteDatabase implements IRemoteDatabase, Serializable, Closeable 
     @Override
     public Boolean connect() {
         try {
+            getReadLock().lock();
             Class.forName(getDriver());
-        } catch (ClassNotFoundException classNotFoundException) {
-            throw new RuntimeException(classNotFoundException);
-        }
-        try {
             setConnection(DriverManager.getConnection(getUrl()));
-        } catch (SQLException sqlException) {
-            throw new RuntimeException(sqlException);
+        } catch (ClassNotFoundException | SQLException exception) {
+            throw new RuntimeException(exception);
+        } finally {
+            getReadLock().unlock();
         }
         return true;
     }
@@ -45,9 +44,12 @@ public class RemoteDatabase implements IRemoteDatabase, Serializable, Closeable 
     @Override
     public Boolean commit() {
         try {
+            getWriteLock().lock();
             getConnection().commit();
         } catch (SQLException sqlException) {
             throw new RuntimeException(sqlException);
+        } finally {
+            getWriteLock().unlock();
         }
         return true;
     }
@@ -55,9 +57,12 @@ public class RemoteDatabase implements IRemoteDatabase, Serializable, Closeable 
     @Override
     public Boolean rollback() {
         try {
+            getWriteLock().lock();
             getConnection().rollback();
         } catch (SQLException sqlException) {
             throw new RuntimeException(sqlException);
+        } finally {
+            getWriteLock().unlock();
         }
         return true;
     }

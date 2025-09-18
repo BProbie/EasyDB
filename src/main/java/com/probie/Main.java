@@ -1,7 +1,5 @@
 package com.probie;
 
-import com.probie.Database.Local.LocalDB;
-
 /**
  * Information
  *
