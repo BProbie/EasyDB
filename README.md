@@ -1,5 +1,5 @@
 # 🚀 EasyDB - Enterprise-Grade Lightweight Java Database Framework
-# 🚀 EasyDB - 企业级轻量级Java数据库框架
+# 🚀 EasyDB - 轻量级Java数据库框架
 
 <div align="center">
 
@@ -7,30 +7,28 @@
 [![Maven Central](https://img.shields.io/badge/Maven-Central-blue.svg?style=for-the-badge)](https://search.maven.org/)
 [![Build Status](https://img.shields.io/badge/Build-Passing-success.svg?style=for-the-badge)](https://github.com/BProbie/EasyDB/actions)
 [![License MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](LICENSE)
-[![Version](https://img.shields.io/badge/Version-1.0.0--SNAPSHOT-orange.svg?style=for-the-badge)](pom.xml)
-[![Downloads](https://img.shields.io/badge/Downloads-10K%2B-green.svg?style=for-the-badge)](https://github.com/BProbie/EasyDB/releases)
-[![Stars](https://img.shields.io/github/stars/BProbie/EasyDB?style=for-the-badge)](https://github.com/BProbie/EasyDB/stargazers)
+[![Version](https://img.shields.io/badge/Version-1.1.0-orange.svg?style=for-the-badge)](pom.xml)
 
 **🔥 Ultra-Lightweight | 🎯 Zero-Dependency | 🛡️ Thread-Safe | 🌐 Remote-Sync | 🎨 Fluent-API**
 
 **🔥 超轻量级 | 🎯 零依赖 | 🛡️ 线程安全 | 🌐 远程同步 | 🎨 流式API**
 
 > **"The Swiss Army Knife of Java Persistence"** - *Making Database Storage as Easy as HashMap Operations*
->
+> 
 > **"Java持久化的瑞士军刀"** - *让数据库存储像HashMap操作一样简单*
 
-[🏠 **Official Website**](https://easydb.dev) | [📖 **Documentation**](https://docs.easydb.dev) | [🎮 **Live Demo**](https://demo.easydb.dev) | [💬 **Discord Community**](https://discord.gg/easydb)
+[🏠 **Official Website**](https://github.com/BProbie/EasyDB) | [📖 **Documentation**](#-comprehensive-usage-guide) | [🎮 **Examples**](#-basic-operations)
 
 </div>
 
 ---
 
-## 🌟 **Table of Contents | 目录**
+## 🌟 **Table of Contents**
 
 <details open>
-<summary>📋 Click to expand comprehensive navigation | 点击查看完整导航</summary>
+<summary>📋 Click to expand comprehensive navigation</summary>
 
-### 🚀 **Getting Started Section**
+### 🚀 **Getting Started**
 - [🎯 **Executive Summary**](#-executive-summary)
 - [🔍 **Why EasyDB?**](#-why-easydb)
 - [⚡ **Quick Start (30 seconds)**](#-quick-start-30-seconds)
@@ -39,32 +37,27 @@
 ### 🏗️ **Architecture Deep Dive**
 - [🏛️ **System Architecture**](#-system-architecture)
 - [🔧 **Core Components**](#-core-components)
-- [⚙️ **Configuration Options**](#-configuration-options)
-- [🔄 **Lifecycle Management**](#-lifecycle-management)
+- [⚙️ **Design Patterns**](#-design-patterns)
 
 ### 💻 **Comprehensive Usage Guide**
 - [📚 **Basic Operations**](#-basic-operations)
 - [🎯 **Advanced Features**](#-advanced-features)
 - [🛠️ **Best Practices**](#-best-practices)
-- [⚡ **Performance Optimization**](#-performance-optimization)
 
 ### 🔬 **Technical Specifications**
-- [📊 **Performance Benchmarks**](#-performance-benchmarks)
-- [🔍 **Memory Profiling**](#-memory-profiling)
-- [⚡ **Concurrency Analysis**](#-concurrency-analysis)
+- [📊 **Performance Characteristics**](#-performance-characteristics)
+- [🔍 **Limitations**](#-limitations)
 - [🛡️ **Security Considerations**](#-security-considerations)
 
 ### 🎯 **Real-World Applications**
 - [🏠 **Desktop Applications**](#-desktop-applications)
-- [📱 **Android Development**](#-android-development)
+- [📱 **Mobile Development**](#-mobile-development)
 - [🎮 **Game Development**](#-game-development)
 - [🧪 **Testing & Prototyping**](#-testing--prototyping)
 
-### 🚀 **Enterprise Integration**
-- [🏢 **Spring Boot Integration**](#-spring-boot-integration)
-- [🔄 **Microservices Support**](#-microservices-support)
-- [☁️ **Cloud Deployment**](#-cloud-deployment)
-- [📊 **Monitoring & Observability**](#-monitoring--observability)
+### 🚀 **Development Roadmap**
+- [📅 **Current Features**](#-current-features)
+- [🔄 **Future Plans**](#-future-plans)
 
 </details>
 
@@ -96,12 +89,8 @@
 ### 🎯 **Problem Statement**
 
 > **"Every Java application needs persistence, but not every application needs a database."**
->
-> **"每个Java应用都需要持久化，但并非每个应用都需要数据库"**
 
 #### 💔 **Traditional Pain Points**
-
-**传统痛点：**
 
 1. **🐘 Heavyweight Solutions**
    - **Hibernate**: 50MB+ dependencies, 2000ms startup
@@ -151,30 +140,21 @@ EasyDB.getInstance().getLocalDatabaseFactory()
 
 #### **1. Maven Central (Recommended)**
 ```xml
-<repositories>
-    <repository>
-        <id>jitpack.io</id>
-        <url>https://jitpack.io</url>
-    </repository>
-</repositories>
-
-<dependencies>
-    <dependency>
-        <groupId>com.probie</groupId>
-        <artifactId>EasyDB</artifactId>
-        <version>1.0.0</version> <!-- 与GitHub Release标签一致 -->
-    </dependency>
-</dependencies>
+<dependency>
+    <groupId>com.github.BProbie</groupId>
+    <artifactId>EasyDB</artifactId>
+    <version>1.1.0</version>
+</dependency>
 ```
 
 #### **2. Gradle (Kotlin DSL)**
 ```kotlin
-implementation("com.probie:EasyDB:1.0.0")
+implementation("com.github.BProbie:EasyDB:1.1.0")
 ```
 
 #### **3. Manual JAR Download**
 ```bash
-wget https://github.com/BProbie/EasyDB/releases/EasyDB-1.0.0.jar
+wget https://github.com/BProbie/EasyDB/releases/download/v1.1.0/EasyDB.jar
 ```
 
 #### **4. Source Code Integration**
@@ -187,26 +167,26 @@ cd EasyDB && mvn clean install
 
 ```java
 import com.probie.EasyDB;
-import com.probie.Database.Local.LocalDB;
 import com.probie.DataPacket.Data;
+import com.probie.Database.Local.LocalDB;
 
 public class QuickStart {
     public static void main(String[] args) {
         // ⚡ Create database in one line
         LocalDB db = EasyDB.getInstance()
-                .getLocalDatabaseFactory()
-                .buildLocalDB()
-                .setFilePath("./myapp.db")
-                .setComment("My Application Database");
-
+            .getLocalDatabaseFactory()
+            .buildLocalDB()
+            .setFilePath("./myapp.db")
+            .setComment("My Application Database");
+        
         // 🎯 Store any object
         db.set("user:123", new Data()
-                .put("name", "Alice")
-                .put("email", "alice@example.com")
-                .put("preferences", new Data()
-                        .put("theme", "dark")
-                        .put("notifications", true)));
-
+            .put("name", "Alice")
+            .put("email", "alice@example.com")
+            .put("preferences", new Data()
+                .put("theme", "dark")
+                .put("notifications", true)));
+        
         // 🔄 Retrieve and use
         Data user = new Data().deCode(db.get("user:123"));
         System.out.println("Welcome back, " + user.get("name"));
@@ -249,67 +229,142 @@ public class QuickStart {
 
 #### **1. EasyDB Singleton (入口点)**
 ```java
-public final class EasyDB {
-    private static final EasyDB INSTANCE = new EasyDB();
+public class EasyDB {
+    private volatile static EasyDB INSTANCE;
     
-    public static EasyDB getInstance() { return INSTANCE; }
+    public synchronized static EasyDB getInstance() {
+        if (INSTANCE == null) {
+            INSTANCE = new EasyDB();
+        }
+        return INSTANCE;
+    }
     
     public LocalDatabaseFactory getLocalDatabaseFactory() {
         return LocalDatabaseFactory.getInstance();
+    }
+    
+    public RemoteDatabaseFactory getRemoteDatabaseFactory() {
+        return RemoteDatabaseFactory.getInstance();
     }
 }
 ```
 
 #### **2. Data Container (数据容器)**
 ```java
-public class Data implements IData, Serializable, Cloneable {
-    private final HashMap<Object, Object> hashMap = new HashMap<>();
-    
+public class Data extends DataPacket implements IData, Cloneable {
     // 🎯 Fluent API Design
-    public Data put(String key, Object value) {
-        hashMap.put(key, value);
+    public Data put(Object key, Object value) {
+        getHashMap().put(key, value);
         return this; // Enable chaining
     }
     
-    // 🔄 Serialization Magic
-    public String enCode() {
-        return Base64.getEncoder()
-            .encodeToString(SerializationUtils.serialize(this));
+    public Object get(Object key) {
+        return getHashMap().get(key);
+    }
+    
+    // 🔄 Support for default values
+    public Object get(Object key, Object defaultValue) {
+        if (get(key) == null) {
+            return defaultValue;
+        }
+        return get(key);
+    }
+    
+    // More powerful operations
+    public Data remove(Object... keys) {
+        for (Object key : keys) {
+            getHashMap().remove(key);
+        }
+        return this;
     }
 }
 ```
 
-#### **3. Thread-Safe Operations**
+#### **3. Local Database Implementation**
 ```java
-public class LocalDatabase {
-    private final ReentrantReadWriteLock lock = new ReentrantReadWriteLock();
+public class LocalDB extends LocalDatabase implements ILocalDB, Serializable, Closeable, Cloneable {
+    private Boolean isAutoCommit = true;
+    private String filePath = getCurrentPath()+"\\"+"LocalDB.properties";
+    private String comment = "A Local Database Of LocalDB Basic On Properties";
     
-    public void safeWrite(Object key, Object value) {
-        lock.writeLock().lock();
+    public LocalDB() {
+        // 🔄 Auto-save on shutdown
+        Runtime.getRuntime().addShutdownHook(new Thread(this::close));
+    }
+    
+    @Override
+    public Boolean connect() {
         try {
-            // Critical section
-            properties.setProperty(key.toString(), serialize(value));
+            getReadLock().lock();
+            getProperties().load(new InputStreamReader(
+                new FileInputStream(getFilePath()), 
+                StandardCharsets.UTF_8
+            ));
+        } catch (IOException ignored) {
+            // File will be created on first commit
         } finally {
-            lock.writeLock().unlock();
+            getReadLock().unlock();
         }
+        return new File(getFilePath()).exists();
+    }
+    
+    @Override
+    public Boolean commit() {
+        setTempProperties(getProperties());
+        try {
+            getWriteLock().lock();
+            // Ensure directory exists
+            new File(getFilePath()).getParentFile().mkdirs();
+            getProperties().store(
+                new FileWriter(getFilePath()), 
+                getComment()
+            );
+        } catch (IOException ioException) {
+            throw new RuntimeException(ioException);
+        } finally {
+            getWriteLock().unlock();
+        }
+        return new File(getFilePath()).exists();
+    }
+}
+```
+
+#### **4. Factory Pattern Implementation**
+```java
+public class LocalDatabaseFactory implements ILocalDatabaseFactory {
+    private volatile static LocalDatabaseFactory INSTANCE;
+    
+    public synchronized static LocalDatabaseFactory getInstance() {
+        if (INSTANCE == null) {
+            INSTANCE = new LocalDatabaseFactory();
+        }
+        return INSTANCE;
+    }
+    
+    @Override
+    public LocalDB buildLocalDB() {
+        return new LocalDB();
+    }
+    
+    @Override
+    public LocalRemoteDB buildLocalRemoteDB(String remoteFilePath) {
+        return new LocalRemoteDB(remoteFilePath);
     }
 }
 ```
 
 ---
 
-## 📚 **Comprehensive Usage Guide**
+## 📚 **Basic Operations**
 
-### 🎯 **Basic Operations Encyclopedia**
-
-#### **1. CRUD Operations Masterclass**
+### 🎯 **CRUD Operations Masterclass**
 
 ```java
 // 📝 CREATE - Multiple Patterns
 LocalDB db = EasyDB.getInstance().getLocalDatabaseFactory().buildLocalDB();
 
 // Pattern 1: Simple Key-Value
-db.set("app.name", "MyAwesomeApp");
+ db.set("app.name", "MyAwesomeApp");
 db.set("app.version", "2.1.0");
 
 // Pattern 2: Object Storage
@@ -341,13 +396,10 @@ Object[] users = db.get(new String[]{"user:bob", "user:alice", "user:charlie"});
 // Direct replacement
 db.set("user:bob", updatedUser);
 
-// Partial updates
+// Atomic updates
 Data userData = new Data().deCode(db.get("user:bob"));
 userData.put("age", 31);
 db.set("user:bob", userData);
-
-// Atomic counters
-db.add("counters:pageviews", 1);
 
 // 🗑️ DELETE - Cleanup Operations
 // Single key
@@ -355,173 +407,208 @@ db.remove("temp:data");
 
 // Batch cleanup
 db.remove("cache:*", "session:*", "temp:*");
-
-// Conditional removal
-db.remove("user:inactive", inactiveUser);
 ```
 
-#### **2. Advanced Data Patterns**
+### 🎯 **Transaction Management**
 
 ```java
-// 🎯 Versioned Configuration
-public class ConfigManager {
-    private final LocalDB db;
-    
-    public void saveConfig(String version, AppConfig config) {
-        db.set("config:v" + version, config);
-        db.set("config:current", version);
-    }
-    
-    public AppConfig rollback(String version) {
-        return (AppConfig) db.get("config:v" + version);
-    }
-}
-
-// 🔄 Event Sourcing Pattern
-public class EventStore {
-    public void appendEvent(String aggregateId, Event event) {
-        String key = "events:" + aggregateId + ":" + event.getSequence();
-        db.set(key, event);
-        db.add("counters:" + aggregateId, 1);
-    }
-    
-    public List<Event> getEvents(String aggregateId) {
-        int count = (int) db.get("counters:" + aggregateId, 0);
-        return IntStream.range(0, count)
-            .mapToObj(i -> (Event) db.get("events:" + aggregateId + ":" + i))
-            .collect(Collectors.toList());
-    }
-}
-
-// 🎯 Feature Flags System
-public class FeatureFlags {
-    public void enableFeature(String feature, double percentage) {
-        db.set("feature:" + feature + ":enabled", true);
-        db.set("feature:" + feature + ":rollout", percentage);
-    }
-    
-    public boolean isEnabled(String feature, String userId) {
-        if (!(boolean) db.get("feature:" + feature + ":enabled", false)) {
-            return false;
-        }
-        
-        double percentage = (double) db.get("feature:" + feature + ":rollout", 0.0);
-        return Math.abs(userId.hashCode() % 100) < percentage * 100;
-    }
-}
-```
-
-#### **3. Remote Synchronization Mastery**
-
-```java
-// 🌐 Advanced Remote Database Operations
-public class RemoteDataManager {
-    private final LocalRemoteDB remoteDB;
-    
-    public RemoteDataManager(String remoteUrl) {
-        this.remoteDB = EasyDB.getInstance()
+// 🔄 Advanced Transaction Handling
+public class TransactionExample {
+    public void transferMoney(String fromAccount, String toAccount, double amount) {
+        LocalDB db = EasyDB.getInstance()
             .getLocalDatabaseFactory()
-            .buildLocalRemoteDB(remoteUrl)
-            .setFilePath("./local-cache.db")
-            .setIsAutoCommit(false);
-    }
-    
-    public CompletableFuture<Boolean> syncWithRetry() {
-        return CompletableFuture.supplyAsync(() -> {
-            int maxRetries = 3;
-            for (int i = 0; i < maxRetries; i++) {
-                try {
-                    if (remoteDB.downloadDatabase()) {
-                        remoteDB.commit();
-                        return true;
-                    }
-                    Thread.sleep(1000 * (i + 1)); // Exponential backoff
-                } catch (Exception e) {
-                    log.warn("Sync attempt {} failed: {}", i + 1, e.getMessage());
-                }
+            .buildLocalDB()
+            .setFilePath("./bank.db")
+            .setIsAutoCommit(false); // Disable auto-commit
+            
+        try {
+            // Get current balances
+            Double fromBalance = (Double) db.get("account:" + fromAccount, 0.0);
+            Double toBalance = (Double) db.get("account:" + toAccount, 0.0);
+            
+            // Business logic validation
+            if (fromBalance < amount) {
+                throw new InsufficientFundsException("Not enough money");
             }
-            return false;
-        });
+            
+            // Perform transaction
+            db.set("account:" + fromAccount, fromBalance - amount);
+            db.set("account:" + toAccount, toBalance + amount);
+            db.set("transaction:" + System.currentTimeMillis(), 
+                new Transaction(fromAccount, toAccount, amount));
+            
+            // Commit only if everything succeeded
+            db.commit();
+            System.out.println("Transaction successful!");
+        } catch (Exception e) {
+            // Rollback on any failure
+            db.rollback();
+            System.err.println("Transaction failed: " + e.getMessage());
+        } finally {
+            // Re-enable auto-commit for future operations
+            db.setIsAutoCommit(true);
+        }
     }
-    
-    public void performBiDirectionalSync() {
-        // Download remote changes
-        remoteDB.downloadDatabase();
+}
+```
+
+### 🌐 **Remote Database Synchronization**
+
+```java
+// 🔄 Remote Database Operations
+public class RemoteSyncExample {
+    public void syncWithCloud() {
+        // Create a local database with remote sync capabilities
+        LocalRemoteDB remoteDB = EasyDB.getInstance()
+            .getLocalDatabaseFactory()
+            .buildLocalRemoteDB("https://example.com/config/master.db")
+            .setFilePath("./local-cache.db")
+            .setComment("Synced Configuration Database");
         
-        // Merge local changes
-        mergeDatabases();
-        
-        // Upload merged data
-        remoteDB.commit();
+        // Download the latest version from remote
+        if (remoteDB.downloadDatabase()) {
+            System.out.println("Database downloaded successfully");
+            
+            // Connect and use the synced database
+            if (remoteDB.connect()) {
+                // Make local modifications
+                remoteDB.set("last_sync_time", System.currentTimeMillis());
+                
+                // Upload changes back to remote (if supported)
+                remoteDB.commit();
+            }
+        } else {
+            System.err.println("Failed to download database");
+            // Fallback to local version
+            remoteDB.connect();
+        }
     }
 }
 ```
 
 ---
 
-## 🔬 **Performance Benchmarks**
+## 🎯 **Advanced Features**
 
-### ⚡ **Micro-Benchmark Results**
+### 🛠️ **Data Structures & Algorithms**
 
-```
-Environment: Java 21, Intel i7-12700K, 32GB RAM, NVMe SSD
-测试环境：Java 21，Intel i7-12700K，32GB内存，NVMe固态硬盘
-
-┌─────────────────────────────────────────────────────────────┐
-│                    Operation Performance                     │
-│                    操作性能对比                               │
-├─────────────────────────┬──────────┬──────────┬────────────┤
-│ Operation Type          │ EasyDB   │ SQLite   │ Properties │
-│ 操作类型                │ EasyDB   │ SQLite   │ Properties │
-├─────────────────────────┼──────────┼──────────┼────────────┤
-│ Single Write            │ 0.12ms   │ 2.3ms    │ 0.08ms     │
-│ 单次写入                │ 0.12毫秒 │ 2.3毫秒  │ 0.08毫秒   │
-├─────────────────────────┼──────────┼──────────┼────────────┤
-│ Single Read             │ 0.08ms   │ 1.8ms    │ 0.05ms     │
-│ 单次读取                │ 0.08毫秒 │ 1.8毫秒  │ 0.05毫秒   │
-├─────────────────────────┼──────────┼──────────┼────────────┤
-│ Batch Write (1000)      │ 45ms     │ 850ms    │ 120ms      │
-│ 批量写入(1000条)        │ 45毫秒   │ 850毫秒  │ 120毫秒    │
-├─────────────────────────┼──────────┼──────────┼────────────┤
-│ Concurrent Reads (100)  │ 12ms     │ 45ms     │ 8ms        │
-│ 并发读取(100个)         │ 12毫秒   │ 45毫秒   │ 8毫秒      │
-├─────────────────────────┼──────────┼──────────┼────────────┤
-│ Memory Usage (10K keys) │ 2.1MB    │ 15MB     │ 1.8MB      │
-│ 内存使用(1万键)         │ 2.1MB    │ 15MB     │ 1.8MB      │
-└─────────────────────────┴──────────┴──────────┴────────────┘
-```
-
-### 📊 **Scalability Analysis**
+#### **1. Efficient Batch Operations**
 
 ```java
-// 🎯 Performance Testing Code
-public class PerformanceTest {
-    public static void main(String[] args) {
-        LocalDB db = EasyDB.getInstance()
+public class BatchOperations {
+    public void processBatchData(List<UserData> users) {
+        LocalDB db = EasyDB.getInstance().getLocalDatabaseFactory().buildLocalDB();
+        
+        // Disable auto-commit for batch processing
+        db.setIsAutoCommit(false);
+        
+        try {
+            // Process all data in memory first
+            for (UserData user : users) {
+                db.set("user:" + user.getId(), user);
+                db.set("index:email:" + user.getEmail(), user.getId());
+                db.set("index:username:" + user.getUsername(), user.getId());
+            }
+            
+            // Single commit for all operations
+            db.commit();
+        } catch (Exception e) {
+            db.rollback();
+            throw e;
+        } finally {
+            db.setIsAutoCommit(true);
+        }
+    }
+}
+```
+
+#### **2. Advanced Indexing Strategy**
+
+```java
+public class IndexingStrategy {
+    private final LocalDB db;
+    
+    public IndexingStrategy() {
+        this.db = EasyDB.getInstance().getLocalDatabaseFactory().buildLocalDB();
+    }
+    
+    public void createIndex(String indexName, String keyPattern) {
+        // Create an index for efficient searching
+        Map<String, Object> allData = db.getAll();
+        
+        for (Map.Entry<String, Object> entry : allData.entrySet()) {
+            if (entry.getKey().matches(keyPattern)) {
+                // Extract field to index
+                Data value = new Data().deCode(entry.getValue());
+                String fieldValue = value.get(indexName).toString();
+                
+                // Store index mapping
+                db.set("index:" + indexName + ":" + fieldValue, entry.getKey());
+            }
+        }
+    }
+    
+    public List<Object> findByIndex(String indexName, String fieldValue) {
+        String originalKey = (String) db.get("index:" + indexName + ":" + fieldValue);
+        if (originalKey != null) {
+            return List.of(db.get(originalKey));
+        }
+        return Collections.emptyList();
+    }
+}
+```
+
+#### **3. Time-Series Data Management**
+
+```java
+public class TimeSeriesManager {
+    private final LocalDB db;
+    private static final int RETENTION_DAYS = 30;
+    
+    public TimeSeriesManager() {
+        this.db = EasyDB.getInstance()
             .getLocalDatabaseFactory()
             .buildLocalDB()
-            .setFilePath("./perf-test.db");
+            .setFilePath("./timeseries.db");
+    }
+    
+    public void recordMetric(String metricName, double value) {
+        long timestamp = System.currentTimeMillis();
+        String key = "metric:" + metricName + ":" + timestamp;
         
-        // 🚀 Throughput Test
-        long start = System.nanoTime();
-        for (int i = 0; i < 10000; i++) {
-            db.set("key:" + i, "value:" + i);
+        // Store metric with additional metadata
+        Data metricData = new Data()
+            .put("value", value)
+            .put("timestamp", timestamp)
+            .put("source", "application");
+        
+        db.set(key, metricData);
+        
+        // Prune old data
+        pruneOldData(metricName, timestamp);
+    }
+    
+    private void pruneOldData(String metricName, long currentTime) {
+        long cutoffTime = currentTime - (RETENTION_DAYS * 24 * 60 * 60 * 1000L);
+        
+        // Find and remove old metrics
+        Map<String, Object> allMetrics = db.getAll();
+        List<String> keysToRemove = new ArrayList<>();
+        
+        for (Map.Entry<String, Object> entry : allMetrics.entrySet()) {
+            if (entry.getKey().startsWith("metric:" + metricName + ":")) {
+                try {
+                    long metricTime = Long.parseLong(entry.getKey().split(":")[2]);
+                    if (metricTime < cutoffTime) {
+                        keysToRemove.add(entry.getKey());
+                    }
+                } catch (NumberFormatException ignored) {}
+            }
         }
-        long duration = System.nanoTime() - start;
         
-        System.out.printf("Throughput: %.2f ops/ms%n", 
-            10000.0 / (duration / 1_000_000.0));
-        
-        // 🔄 Latency Test
-        long[] latencies = new long[1000];
-        for (int i = 0; i < 1000; i++) {
-            long opStart = System.nanoTime();
-            db.get("key:" + (i % 1000));
-            latencies[i] = System.nanoTime() - opStart;
+        if (!keysToRemove.isEmpty()) {
+            db.remove(keysToRemove.toArray(new String[0]));
         }
-        
-        double avgLatency = Arrays.stream(latencies).average().orElse(0);
-        System.out.printf("Average latency: %.2f ns%n", avgLatency);
     }
 }
 ```
@@ -532,39 +619,136 @@ public class PerformanceTest {
 
 ### 🔐 **Built-in Security Features**
 
-#### **1. Data Integrity**
+#### **1. Data Integrity Verification**
+
 ```java
-// 🎯 Checksum Validation
 public class SecureLocalDB extends LocalDB {
+    private static final String CHECKSUM_KEY = "_metadata:checksum";
+    
+    @Override
+    public Boolean commit() {
+        // Calculate checksum before committing
+        String checksum = calculateChecksum();
+        set(CHECKSUM_KEY, checksum);
+        
+        return super.commit();
+    }
+    
     public boolean validateIntegrity() {
-        String checksum = (String) get("_metadata:checksum");
-        String calculated = calculateChecksum();
-        return checksum.equals(calculated);
+        String storedChecksum = (String) get(CHECKSUM_KEY);
+        
+        // Temporarily remove checksum to calculate current checksum
+        remove(CHECKSUM_KEY);
+        String currentChecksum = calculateChecksum();
+        
+        // Restore checksum
+        set(CHECKSUM_KEY, storedChecksum);
+        
+        return storedChecksum != null && storedChecksum.equals(currentChecksum);
     }
     
     private String calculateChecksum() {
-        // CRC32 checksum implementation
-        CRC32 crc = new CRC32();
-        // ... calculation logic
-        return Long.toHexString(crc.getValue());
+        try {
+            // Create a checksum based on all data
+            MessageDigest md = MessageDigest.getInstance("SHA-256");
+            Map<String, Object> allData = getAll();
+            
+            for (Map.Entry<String, Object> entry : allData.entrySet()) {
+                md.update(entry.getKey().getBytes(StandardCharsets.UTF_8));
+                md.update(entry.getValue().toString().getBytes(StandardCharsets.UTF_8));
+            }
+            
+            byte[] hashBytes = md.digest();
+            StringBuilder sb = new StringBuilder();
+            for (byte b : hashBytes) {
+                sb.append(String.format("%02x", b));
+            }
+            return sb.toString();
+        } catch (NoSuchAlgorithmException e) {
+            throw new RuntimeException("SHA-256 algorithm not found", e);
+        }
     }
 }
 ```
 
-#### **2. Access Control Patterns**
+#### **2. Access Control & Encryption**
+
 ```java
-// 🛡️ Multi-tenant Security
-public class TenantAwareDB {
-    private final String tenantId;
+public class EncryptedDB {
+    private final LocalDB db;
+    private final SecretKey encryptionKey;
+    
+    public EncryptedDB(String password) {
+        this.db = EasyDB.getInstance().getLocalDatabaseFactory().buildLocalDB();
+        this.encryptionKey = deriveKey(password);
+    }
     
     public void setSecure(String key, Object value) {
-        String secureKey = "tenant:" + tenantId + ":" + key;
-        db.set(secureKey, encrypt(value));
+        try {
+            // Encrypt sensitive data before storage
+            String encryptedValue = encrypt(value);
+            db.set(key, encryptedValue);
+        } catch (Exception e) {
+            throw new RuntimeException("Failed to encrypt data", e);
+        }
     }
     
     public Object getSecure(String key) {
-        String secureKey = "tenant:" + tenantId + ":" + key;
-        return decrypt(db.get(secureKey));
+        try {
+            String encryptedValue = (String) db.get(key);
+            if (encryptedValue != null) {
+                return decrypt(encryptedValue);
+            }
+            return null;
+        } catch (Exception e) {
+            throw new RuntimeException("Failed to decrypt data", e);
+        }
+    }
+    
+    private SecretKey deriveKey(String password) {
+        // In a real implementation, use a proper key derivation function
+        try {
+            MessageDigest sha = MessageDigest.getInstance("SHA-256");
+            byte[] keyBytes = sha.digest(password.getBytes(StandardCharsets.UTF_8));
+            return new SecretKeySpec(Arrays.copyOf(keyBytes, 16), "AES");
+        } catch (NoSuchAlgorithmException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    
+    private String encrypt(Object value) throws Exception {
+        // Simplified encryption example
+        Cipher cipher = Cipher.getInstance("AES/GCM/NoPadding");
+        byte[] iv = new byte[12];
+        new SecureRandom().nextBytes(iv);
+        GCMParameterSpec parameterSpec = new GCMParameterSpec(128, iv);
+        
+        cipher.init(Cipher.ENCRYPT_MODE, encryptionKey, parameterSpec);
+        byte[] encryptedData = cipher.doFinal(SerializationUtils.serialize(value));
+        
+        ByteBuffer byteBuffer = ByteBuffer.allocate(iv.length + encryptedData.length);
+        byteBuffer.put(iv);
+        byteBuffer.put(encryptedData);
+        
+        return Base64.getEncoder().encodeToString(byteBuffer.array());
+    }
+    
+    private Object decrypt(String encrypted) throws Exception {
+        // Simplified decryption example
+        byte[] encryptedData = Base64.getDecoder().decode(encrypted);
+        ByteBuffer byteBuffer = ByteBuffer.wrap(encryptedData);
+        
+        byte[] iv = new byte[12];
+        byteBuffer.get(iv);
+        
+        byte[] actualEncryptedData = new byte[byteBuffer.remaining()];
+        byteBuffer.get(actualEncryptedData);
+        
+        Cipher cipher = Cipher.getInstance("AES/GCM/NoPadding");
+        GCMParameterSpec parameterSpec = new GCMParameterSpec(128, iv);
+        cipher.init(Cipher.DECRYPT_MODE, encryptionKey, parameterSpec);
+        
+        return SerializationUtils.deserialize(cipher.doFinal(actualEncryptedData));
     }
 }
 ```
@@ -575,68 +759,146 @@ public class TenantAwareDB {
 
 ### 🏠 **Desktop Application Integration**
 
-#### **1. JavaFX Preferences System**
+#### **1. Application Preferences Manager**
+
 ```java
-public class FXPreferencesManager {
-    private final LocalDB preferencesDB;
+public class AppPreferences {
+    private final LocalDB prefsDB;
+    private static final String PREFS_FILE = System.getProperty("user.home") + "/.myapp/prefs.db";
     
-    public FXPreferencesManager() {
-        this.preferencesDB = EasyDB.getInstance()
+    public AppPreferences() {
+        this.prefsDB = EasyDB.getInstance()
             .getLocalDatabaseFactory()
             .buildLocalDB()
-            .setFilePath(Paths.get(
-                System.getProperty("user.home"), 
-                ".myapp", "preferences.db"
-            ).toString());
-    }
-    
-    public void saveWindowState(Stage stage) {
-        WindowState state = new WindowState(
-            stage.getX(), stage.getY(),
-            stage.getWidth(), stage.getHeight(),
-            stage.isMaximized()
-        );
-        preferencesDB.set("window:main", state);
-    }
-    
-    public void restoreWindowState(Stage stage) {
-        WindowState state = (WindowState) preferencesDB.get("window:main");
-        if (state != null) {
-            stage.setX(state.getX());
-            stage.setY(state.getY());
-            stage.setWidth(state.getWidth());
-            stage.setHeight(state.getHeight());
-            stage.setMaximized(state.isMaximized());
+            .setFilePath(PREFS_FILE)
+            .setComment("My Application Preferences");
+            
+        // Ensure the database exists
+        File prefsDir = new File(PREFS_FILE).getParentFile();
+        if (!prefsDir.exists()) {
+            prefsDir.mkdirs();
         }
+        
+        // Connect to the database
+        if (!prefsDB.connect()) {
+            // Initialize default preferences if file doesn't exist
+            initializeDefaults();
+        }
+    }
+    
+    private void initializeDefaults() {
+        prefsDB.set("theme", "light");
+        prefsDB.set("language", "en");
+        prefsDB.set("notifications", true);
+        prefsDB.set("font_size", 14);
+        prefsDB.commit();
+    }
+    
+    public <T> T getPreference(String key, T defaultValue) {
+        Object value = prefsDB.get(key);
+        if (value != null) {
+            try {
+                return (T) value;
+            } catch (ClassCastException e) {
+                // Log error and return default
+                System.err.println("Type mismatch for preference: " + key);
+            }
+        }
+        return defaultValue;
+    }
+    
+    public void setPreference(String key, Object value) {
+        prefsDB.set(key, value);
+        prefsDB.commit();
+    }
+    
+    public Map<String, Object> getAllPreferences() {
+        return prefsDB.getAll();
     }
 }
 ```
 
-### 📱 **Android Development**
+### 📱 **Mobile Development (Java Android)**
 
-#### **2. Offline-First Mobile App**
+#### **2. Offline-First Data Synchronization**
+
 ```java
 public class OfflineDataManager {
     private final LocalDB cacheDB;
     private final LocalRemoteDB syncDB;
+    private final ExecutorService executorService = Executors.newSingleThreadExecutor();
+    
+    public OfflineDataManager(Context context) {
+        // Use app-specific storage path
+        File dbFile = new File(context.getFilesDir(), "app_data.db");
+        
+        this.cacheDB = EasyDB.getInstance()
+            .getLocalDatabaseFactory()
+            .buildLocalDB()
+            .setFilePath(dbFile.getAbsolutePath())
+            .setComment("Offline Data Cache");
+        
+        this.syncDB = EasyDB.getInstance()
+            .getLocalDatabaseFactory()
+            .buildLocalRemoteDB("https://api.myapp.com/sync/data")
+            .setFilePath(dbFile.getAbsolutePath());
+        
+        // Connect to the local database
+        cacheDB.connect();
+    }
     
     public CompletableFuture<List<Article>> getArticles() {
         return CompletableFuture.supplyAsync(() -> {
             // Try local cache first
             List<Article> cached = (List<Article>) cacheDB.get("articles:latest");
             if (cached != null && !cached.isEmpty()) {
-                return cached;
+                // Check if cache is fresh (<5 minutes old)
+                Long lastSync = (Long) cacheDB.get("articles:lastSync", 0L);
+                if (System.currentTimeMillis() - lastSync < 5 * 60 * 1000) {
+                    return cached;
+                }
             }
             
-            // Fallback to remote
-            syncDB.downloadDatabase();
-            return (List<Article>) cacheDB.get("articles:latest");
+            // If cache is stale or empty, try to sync with server
+            // but return cached data while sync happens in background
+            syncArticlesInBackground();
+            
+            // Return cached data even if sync is triggered
+            return cached != null ? cached : Collections.emptyList();
+        }, executorService);
+    }
+    
+    private void syncArticlesInBackground() {
+        executorService.submit(() -> {
+            try {
+                // Download latest data from server
+                if (syncDB.downloadDatabase()) {
+                    // Update local cache with new data
+                    List<Article> freshArticles = (List<Article>) syncDB.get("articles:latest");
+                    if (freshArticles != null) {
+                        cacheDB.set("articles:latest", freshArticles);
+                        cacheDB.set("articles:lastSync", System.currentTimeMillis());
+                        cacheDB.commit();
+                        
+                        // Notify UI that data has been updated
+                        notifyDataChanged();
+                    }
+                }
+            } catch (Exception e) {
+                Log.e("OfflineDataManager", "Failed to sync articles: " + e.getMessage());
+            }
         });
     }
     
-    public void syncArticles(List<Article> articles) {
-        cacheDB.set("articles:latest", articles);
-        cacheDB.set("articles:lastSync", System.currentTimeMillis());
+    private void notifyDataChanged() {
+        // This would typically use a LiveData or similar mechanism
+        // to notify the UI that data has changed
+    }
+    
+    // Call this when the app is destroyed to clean up resources
+    public void shutdown() {
+        executorService.shutdown();
+        cacheDB.close();
     }
 }
 ```
@@ -644,240 +906,239 @@ public class OfflineDataManager {
 ### 🎮 **Game Development**
 
 #### **3. Save Game System**
+
 ```java
 public class GameSaveManager {
     private final LocalDB saveDB;
+    private static final String SAVE_DIR = "saves/";
     
-    public void saveGame(String slot, GameState state) {
-        String key = "save:" + slot;
-        saveDB.set(key, state);
-        saveDB.set(key + ":timestamp", System.currentTimeMillis());
-        saveDB.set(key + ":screenshot", generateScreenshot());
-    }
-    
-    public GameState loadGame(String slot) {
-        return (GameState) saveDB.get("save:" + slot);
-    }
-    
-    public List<SaveSlot> getSaveSlots() {
-        return Arrays.asList("1", "2", "3", "4", "5").stream()
-            .map(slot -> new SaveSlot(
-                slot,
-                (GameState) saveDB.get("save:" + slot),
-                (Long) saveDB.get("save:" + slot + ":timestamp"),
-                (byte[]) saveDB.get("save:" + slot + ":screenshot")
-            ))
-            .filter(slot -> slot.getState() != null)
-            .sorted(Comparator.comparing(SaveSlot::getTimestamp).reversed())
-            .collect(Collectors.toList());
-    }
-}
-```
-
----
-
-## 🏢 **Enterprise Integration**
-
-### 🔄 **Spring Boot Starter**
-
-#### **1. Auto-Configuration**
-```java
-@Configuration
-@EnableConfigurationProperties(EasyDBProperties.class)
-@ConditionalOnClass(LocalDB.class)
-public class EasyDBAutoConfiguration {
-    
-    @Bean
-    @ConditionalOnMissingBean
-    public LocalDB easyDB(EasyDBProperties properties) {
-        return EasyDB.getInstance()
-            .getLocalDatabaseFactory()
-            .buildLocalDB()
-            .setFilePath(properties.getFilePath())
-            .setIsAutoCommit(properties.isAutoCommit());
-    }
-    
-    @Bean
-    public EasyDBTemplate easyDBTemplate(LocalDB db) {
-        return new EasyDBTemplate(db);
-    }
-}
-```
-
-#### **2. Repository Pattern**
-```java
-@Repository
-public class UserRepository {
-    @Autowired
-    private EasyDBTemplate template;
-    
-    public void save(User user) {
-        template.opsForValue().set("user:" + user.getId(), user);
-    }
-    
-    public User findById(String id) {
-        return template.opsForValue().get("user:" + id, User.class);
-    }
-    
-    public List<User> findAll() {
-        return template.scan("user:*")
-            .stream()
-            .map(key -> template.opsForValue().get(key, User.class))
-            .collect(Collectors.toList());
-    }
-}
-```
-
-### ☁️ **Cloud-Native Deployment**
-
-#### **3. Kubernetes ConfigMap**
-```yaml
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: easydb-config
-data:
-  application.yml: |
-    easydb:
-      file-path: /data/app.db
-      auto-commit: true
-      remote-sync:
-        enabled: true
-        url: https://config.example.com/app.db
-        interval: 300000  # 5 minutes
-```
-
----
-
-## 📊 **Monitoring & Observability**
-
-### 🔍 **Metrics Integration**
-
-```java
-@Component
-public class EasyDBMetrics {
-    private final MeterRegistry registry;
-    private final LocalDB db;
-    
-    @PostConstruct
-    public void initializeMetrics() {
-        // 📊 Operation counters
-        Counter.builder("easydb.operations")
-            .tag("type", "write")
-            .register(registry);
-            
-        // ⏱️ Latency histograms
-        Timer.builder("easydb.latency")
-            .tag("operation", "get")
-            .register(registry);
-            
-        // 📈 Database size gauge
-        Gauge.builder("easydb.size.bytes")
-            .register(registry, db, this::calculateSize);
-    }
-    
-    private double calculateSize(LocalDB db) {
-        return new File(db.getFilePath()).length();
-    }
-}
-```
-
-### 🚨 **Health Checks**
-
-```java
-@Component
-public class EasyDBHealthIndicator implements HealthIndicator {
-    @Override
-    public Health health() {
-        try {
-            LocalDB db = EasyDB.getInstance()
-                .getLocalDatabaseFactory()
-                .buildLocalDB();
-                
-            if (db.connect()) {
-                db.set("health:check", System.currentTimeMillis());
-                return Health.up()
-                    .withDetail("filePath", db.getFilePath())
-                    .withDetail("size", new File(db.getFilePath()).length())
-                    .build();
-            }
-            return Health.down().withDetail("reason", "Connection failed").build();
-        } catch (Exception e) {
-            return Health.down(e).build();
-        }
-    }
-}
-```
-
----
-
-## 🎯 **Best Practices & Patterns**
-
-### 🏗️ **Naming Conventions**
-
-```java
-// ✅ Recommended Patterns
-public class NamingPatterns {
-    // 🎯 Hierarchical Namespacing
-    private static final String KEY_USER = "user:{id}:{attribute}";
-    private static final String KEY_CONFIG = "config:{env}:{service}:{key}";
-    private static final String KEY_CACHE = "cache:{type}:{key}:{timestamp}";
-    
-    // 🔄 Versioned Keys
-    private static final String KEY_SCHEMA = "schema:v{version}:{entity}";
-    
-    public String buildUserKey(String id, String attribute) {
-        return KEY_USER.replace("{id}", id).replace("{attribute}", attribute);
-    }
-}
-```
-
-### 🔄 **Migration Strategies**
-
-```java
-public class DatabaseMigration {
-    public void migrateV1ToV2() {
-        LocalDB v1 = EasyDB.getInstance()
-            .getLocalDatabaseFactory()
-            .buildLocalDB()
-            .setFilePath("./app-v1.db");
-            
-        LocalDB v2 = EasyDB.getInstance()
-            .getLocalDatabaseFactory()
-            .buildLocalDB()
-            .setFilePath("./app-v2.db");
-            
-        // 🔄 Data transformation
-        Map<String, Object> oldData = v1.getAll();
-        Map<String, Object> newData = transformSchema(oldData);
+    public GameSaveManager() {
+        // Ensure save directory exists
+        new File(SAVE_DIR).mkdirs();
         
-        newData.forEach(v2::set);
-        v2.commit();
+        this.saveDB = EasyDB.getInstance()
+            .getLocalDatabaseFactory()
+            .buildLocalDB()
+            .setFilePath(SAVE_DIR + "game_saves.db")
+            .setComment("Game Save Data");
+        
+        // Connect to the database
+        saveDB.connect();
+    }
+    
+    public void saveGame(String saveName, GameState gameState) {
+        // Generate a unique save ID
+        String saveId = "save:" + saveName + ":" + System.currentTimeMillis();
+        
+        // Create save metadata
+        Data saveMetadata = new Data()
+            .put("name", saveName)
+            .put("timestamp", System.currentTimeMillis())
+            .put("playtime", gameState.getPlaytimeSeconds())
+            .put("level", gameState.getCurrentLevel())
+            .put("characterName", gameState.getPlayerName())
+            .put("saveId", saveId);
+        
+        // Store the game state and metadata
+        saveDB.set(saveId, gameState);
+        saveDB.set("metadata:" + saveId, saveMetadata);
+        
+        // Keep track of all save slots
+        updateSaveIndex(saveMetadata);
+        
+        // Commit the changes
+        saveDB.commit();
+    }
+    
+    public GameState loadGame(String saveId) {
+        return (GameState) saveDB.get(saveId);
+    }
+    
+    public List<SaveMetadata> getSaveSlots() {
+        List<SaveMetadata> saveSlots = new ArrayList<>();
+        
+        // Get all save metadata entries
+        Map<String, Object> allData = saveDB.getAll();
+        
+        for (Map.Entry<String, Object> entry : allData.entrySet()) {
+            if (entry.getKey().startsWith("metadata:save:")) {
+                Data metadataData = new Data().deCode(entry.getValue());
+                SaveMetadata metadata = new SaveMetadata(
+                    metadataData.get("saveId").toString(),
+                    metadataData.get("name").toString(),
+                    (long) metadataData.get("timestamp"),
+                    (int) metadataData.get("playtime"),
+                    (int) metadataData.get("level"),
+                    metadataData.get("characterName").toString()
+                );
+                saveSlots.add(metadata);
+            }
+        }
+        
+        // Sort by timestamp (newest first)
+        saveSlots.sort((s1, s2) -> Long.compare(s2.getTimestamp(), s1.getTimestamp()));
+        
+        return saveSlots;
+    }
+    
+    private void updateSaveIndex(Data saveMetadata) {
+        // Get current save index
+        List<String> saveIndex = (List<String>) saveDB.get("save_index");
+        if (saveIndex == null) {
+            saveIndex = new ArrayList<>();
+        }
+        
+        // Add new save ID to the index
+        String saveId = saveMetadata.get("saveId").toString();
+        saveIndex.add(saveId);
+        
+        // Keep only the 10 most recent saves
+        if (saveIndex.size() > 10) {
+            // Get oldest saves to delete
+            List<String> savesToDelete = saveIndex.subList(0, saveIndex.size() - 10);
+            
+            // Delete old saves
+            for (String oldSaveId : savesToDelete) {
+                saveDB.remove(oldSaveId);
+                saveDB.remove("metadata:" + oldSaveId);
+            }
+            
+            // Update the index
+            saveIndex = saveIndex.subList(saveIndex.size() - 10, saveIndex.size());
+        }
+        
+        // Save the updated index
+        saveDB.set("save_index", saveIndex);
     }
 }
 ```
 
 ---
 
-## 🚀 **Development Roadmap**
+## 📊 **Performance Characteristics**
 
-### 📅 **Version 1.1 (Q2 2024)**
-- [ ] **Encryption Support** - AES-256 encryption
-- [ ] **Compression** - GZIP/Brotli compression
-- [ ] **Query Language** - Simple DSL for filtering
-- [ ] **Backup System** - Automated backups
+### ⚡ **Performance Benchmarks**
 
-### 📅 **Version 1.2 (Q3 2024)**
-- [ ] **Clustering** - Multi-node synchronization
-- [ ] **Replication** - Master-slave replication
-- [ ] **Monitoring Dashboard** - Web-based monitoring
-- [ ] **CLI Tools** - Command-line interface
+```
+Environment: Java 21, Intel i7-12700K, 32GB RAM, NVMe SSD
 
-### 📅 **Version 2.0 (Q4 2024)**
-- [ ] **Reactive Streams** - RxJava/Reactor support
-- [ ] **Native Images** - GraalVM native compilation
-- [ ] **WebAssembly** - WASM runtime support
-- [ ] **Cloud Functions** - Serverless integration
+┌─────────────────────────────────────────────────────────────┐
+│                    Operation Performance                     │
+├─────────────────────────┬──────────┬──────────┬────────────┤
+│ Operation Type          │ EasyDB   │ SQLite   │ Properties │
+├─────────────────────────┼──────────┼──────────┼────────────┤
+│ Single Write            │ 0.12ms   │ 2.3ms    │ 0.08ms     │
+├─────────────────────────┼──────────┼──────────┼────────────┤
+│ Single Read             │ 0.08ms   │ 1.8ms    │ 0.05ms     │
+├─────────────────────────┼──────────┼──────────┼────────────┤
+│ Batch Write (1000)      │ 45ms     │ 850ms    │ 120ms      │
+├─────────────────────────┼──────────┼──────────┼────────────┤
+│ Concurrent Reads (100)  │ 12ms     │ 45ms     │ 8ms        │
+├─────────────────────────┼──────────┼──────────┼────────────┤
+│ Memory Usage (10K keys) │ 2.1MB    │ 15MB     │ 1.8MB      │
+└─────────────────────────┴──────────┴──────────┴────────────┘
+```
+
+### 🔍 **Scalability Analysis**
+
+```java
+public class PerformanceTest {
+    public static void main(String[] args) {
+        // Initialize database
+        LocalDB db = EasyDB.getInstance()
+            .getLocalDatabaseFactory()
+            .buildLocalDB()
+            .setFilePath("./perf-test.db")
+            .setIsAutoCommit(false);
+        
+        // 🚀 Throughput Test - Write Performance
+        System.out.println("Running throughput test...");
+        long start = System.nanoTime();
+        int operations = 100000;
+        
+        for (int i = 0; i < operations; i++) {
+            db.set("key:" + i, "value:" + i);
+        }
+        
+        db.commit();
+        long duration = System.nanoTime() - start;
+        double opsPerSecond = operations / (duration / 1_000_000_000.0);
+        
+        System.out.printf("Write Throughput: %.2f operations/second\n", opsPerSecond);
+        System.out.printf("Time per operation: %.2f microseconds\n", 
+            (duration / 1_000.0) / operations);
+        
+        // 🔄 Latency Test - Read Performance
+        System.out.println("Running latency test...");
+        long[] latencies = new long[1000];
+        
+        for (int i = 0; i < 1000; i++) {
+            int randomKey = (int) (Math.random() * operations);
+            long opStart = System.nanoTime();
+            db.get("key:" + randomKey);
+            latencies[i] = System.nanoTime() - opStart;
+        }
+        
+        double avgLatency = Arrays.stream(latencies).average().orElse(0);
+        double p95Latency = getPercentile(latencies, 95);
+        double p99Latency = getPercentile(latencies, 99);
+        
+        System.out.printf("Average read latency: %.2f nanoseconds\n", avgLatency);
+        System.out.printf("95th percentile read latency: %.2f nanoseconds\n", p95Latency);
+        System.out.printf("99th percentile read latency: %.2f nanoseconds\n", p99Latency);
+        
+        // 📊 Memory Usage Test
+        System.gc();
+        Runtime runtime = Runtime.getRuntime();
+        long memoryUsed = (runtime.totalMemory() - runtime.freeMemory()) / 1024 / 1024;
+        System.out.printf("Memory usage after %d operations: %d MB\n", operations, memoryUsed);
+    }
+    
+    private static double getPercentile(long[] values, double percentile) {
+        Arrays.sort(values);
+        int index = (int) Math.ceil(percentile / 100.0 * values.length) - 1;
+        return values[index];
+    }
+}
+```
+
+---
+
+## 📅 **Development Roadmap**
+
+### 🚀 **Current Features (v1.1.0)**
+- ✅ **Local Database** - Properties-based file storage
+- ✅ **Object Serialization** - Store any Java object
+- ✅ **Thread Safety** - Built-in read-write locks
+- ✅ **Transaction Support** - Commit and rollback operations
+- ✅ **Remote Synchronization** - Download and sync from remote URLs
+- ✅ **Factory Pattern** - Elegant object creation
+- ✅ **Fluent API** - Chainable method calls
+- ✅ **Zero Dependencies** - Pure Java implementation
+- ✅ **Auto-Commit** - Configurable auto-save behavior
+- ✅ **Shutdown Hooks** - Auto-save on JVM exit
+
+### 🔄 **Future Plans (v1.2.0 - Q3 2024)**
+- [ ] **Data Compression** - GZIP/Brotli compression support
+- [ ] **Advanced Query DSL** - Simple query language for filtering
+- [ ] **Automatic Backups** - Scheduled backup functionality
+- [ ] **Encryption Module** - AES-256 encryption for sensitive data
+- [ ] **Performance Metrics** - Built-in monitoring and statistics
+- [ ] **Batch Processing API** - Optimized bulk operations
+- [ ] **Indexing System** - Faster lookups with secondary indexes
+- [ ] **Expiration Mechanism** - Time-based data expiration
+- [ ] **Change Tracking** - Detect and notify data changes
+- [ ] **Command Line Interface** - Administer databases from terminal
+
+### 🌟 **Long-term Vision (v2.0.0)**
+- [ ] **Reactive API** - RxJava and Project Reactor support
+- [ ] **Multi-threaded Engine** - Parallel processing capabilities
+- [ ] **Network Replication** - Real-time multi-node synchronization
+- [ ] **Query Optimizer** - Intelligent query execution planning
+- [ ] **GraalVM Native Image** - Compile to native for faster startup
+- [ ] **Distributed Mode** - Cluster support for high availability
+- [ ] **Web Management Console** - Browser-based administration UI
+- [ ] **Cloud Integration** - AWS, GCP, Azure storage adapters
 
 ---
 
@@ -887,27 +1148,32 @@ public class DatabaseMigration {
 
 1. **🍴 Fork & Clone**
    ```bash
-   git clone https://github.com/BProbie/EasyDB.git
-   cd EasyDB
-   ```
+git clone https://github.com/BProbie/EasyDB.git
+cd EasyDB
+```
 
 2. **🧪 Development Setup**
    ```bash
-   ./mvnw clean install
-   ./mvnw test
-   ```
+./mvnw clean install
+./mvnw test
+```
 
 3. **🎯 Code Style**
-   ```bash
-   ./mvnw spotless:apply
-   ./mvnw checkstyle:check
-   ```
+   - Follow Java naming conventions
+   - Use 4 spaces for indentation
+   - Limit lines to 120 characters
+   - Add Javadoc for public methods
 
 4. **📊 Testing**
-   ```bash
-   ./mvnw test -Dtest=PerformanceTest
-   ./mvnw test -Dtest=ConcurrencyTest
-   ```
+   - Write unit tests for new functionality
+   - Ensure existing tests pass
+   - Add performance benchmarks if applicable
+
+5. **🚀 Pull Request Process**
+   - Create a feature branch
+   - Commit your changes
+   - Push to your fork
+   - Open a Pull Request
 
 ### 🏆 **Contributing Areas**
 
@@ -924,6 +1190,7 @@ public class DatabaseMigration {
 ## 📄 **License & Legal**
 
 ### 📋 **MIT License**
+
 ```
 MIT License
 
@@ -954,20 +1221,10 @@ SOFTWARE.
 
 ### 🏆 **Special Thanks**
 
-- **🌟 Java Community** - For the amazing ecosystem
-- **🔧 Contributors** - All the amazing people who contributed
-- **📚 Open Source** - Making knowledge freely available
-- **🎯 Users** - For trusting EasyDB in production
-
-### 📊 **Statistics**
-
-| Metric | Value |
-|--------|-------|
-| **⭐ GitHub Stars** | 1,247 |
-| **🍴 Forks** | 89 |
-| **🚀 Downloads** | 45,231 |
-| **👥 Contributors** | 23 |
-| **🌍 Countries** | 42 |
+- **🌟 Java Community** - For the amazing ecosystem and continuous innovation
+- **🔧 Contributors** - All the amazing people who have helped improve EasyDB
+- **📚 Open Source** - Making knowledge freely available for everyone
+- **🎯 Users** - For trusting EasyDB in their projects and providing valuable feedback
 
 ---
 
@@ -975,7 +1232,7 @@ SOFTWARE.
 
 ### 🚀 **Made with ❤️ by the EasyDB Team**
 
-**[🏠 Website](https://easydb.dev)** | **[📖 Docs](https://docs.easydb.dev)** | **[💬 Discord](https://discord.gg/easydb)** | **[🐦 Twitter](https://twitter.com/easydb)**
+**[🏠 GitHub Repository](https://github.com/BProbie/EasyDB)** | **[📖 Documentation](#)** | **[💬 Issues & Feedback](https://github.com/BProbie/EasyDB/issues)**
 
 **让数据持久化变得简单而强大 | Making Data Persistence Simple Yet Powerful**
 
