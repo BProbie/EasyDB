@@ -104,15 +104,16 @@ public class RemoteDatabase implements IRemoteDatabase, Serializable, Closeable 
     @Override
     public Boolean runPreparedStatementExecute(PreparedStatement preparedStatement) {
         try {
+            getWriteLock().lock();
             if (!preparedStatement.isClosed()) {
-                getWriteLock().lock();
                 Boolean isExecute = preparedStatement.execute();
-                getWriteLock().unlock();
                 preparedStatement.close();
                 return isExecute;
             }
         } catch (SQLException sqlException) {
             throw new RuntimeException(sqlException);
+        } finally {
+            getWriteLock().unlock();
         }
         return false;
     }
@@ -136,13 +137,16 @@ public class RemoteDatabase implements IRemoteDatabase, Serializable, Closeable 
     public int runPreparedStatementUpdate(PreparedStatement preparedStatement) {
         try {
             getWriteLock().lock();
-            int updateCount = preparedStatement.executeUpdate();
-            return updateCount;
+            if (!preparedStatement.isClosed()) {
+                int updateCount = preparedStatement.executeUpdate();
+                return updateCount;
+            }
         } catch (SQLException sqlException) {
             throw new RuntimeException(sqlException);
         } finally {
             getWriteLock().unlock();
         }
+        return -1;
     }
 
     @Override
@@ -164,13 +168,16 @@ public class RemoteDatabase implements IRemoteDatabase, Serializable, Closeable 
     public ResultSet runPreparedStatementQuery(PreparedStatement preparedStatement) {
         try {
             getReadLock().lock();
-            ResultSet resultSet = preparedStatement.executeQuery();
-            return resultSet;
+            if (!preparedStatement.isClosed()) {
+                ResultSet resultSet = preparedStatement.executeQuery();
+                return resultSet;
+            }
         } catch (SQLException sqlException) {
             throw new RuntimeException(sqlException);
         } finally {
             getReadLock().unlock();
         }
+        return null;
     }
 
     @Override
