@@ -9,9 +9,9 @@ import com.probie.Database.Remote.Interface.IRemoteDatabase;
 
 public class RemoteDatabase implements IRemoteDatabase, Serializable, Closeable {
 
-    private ReentrantReadWriteLock reentrantReadWriteLock = new ReentrantReadWriteLock();
-    private Lock readLock = reentrantReadWriteLock.readLock();
-    private Lock writeLock = reentrantReadWriteLock.writeLock();
+    private final static ReentrantReadWriteLock reentrantReadWriteLock = new ReentrantReadWriteLock();
+    private final static Lock readLock = reentrantReadWriteLock.readLock();
+    private final static Lock writeLock = reentrantReadWriteLock.writeLock();
 
     private Connection connection;
 

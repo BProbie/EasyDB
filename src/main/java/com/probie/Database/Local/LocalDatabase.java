@@ -8,9 +8,9 @@ import com.probie.Database.Local.Interface.ILocalDatabase;
 
 public class LocalDatabase extends LocalDBProperties implements ILocalDatabase {
 
-    private final ReentrantReadWriteLock reentrantReadWriteLock = new ReentrantReadWriteLock();
-    private final Lock readLock = reentrantReadWriteLock.readLock();
-    private final Lock writeLock = reentrantReadWriteLock.writeLock();
+    private final static ReentrantReadWriteLock reentrantReadWriteLock = new ReentrantReadWriteLock();
+    private final static Lock readLock = reentrantReadWriteLock.readLock();
+    private final static Lock writeLock = reentrantReadWriteLock.writeLock();
 
     private String split = ", ";
 

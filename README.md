@@ -7,7 +7,7 @@
 [![Maven Central](https://img.shields.io/badge/Maven-Central-blue.svg?style=for-the-badge)](https://search.maven.org/)
 [![Build Status](https://img.shields.io/badge/Build-Passing-success.svg?style=for-the-badge)](https://github.com/BProbie/EasyDB/actions)
 [![License MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](LICENSE)
-[![Version](https://img.shields.io/badge/Version-1.1.0-orange.svg?style=for-the-badge)](pom.xml)
+[![Version](https://img.shields.io/badge/Version-1.2.0-orange.svg?style=for-the-badge)](pom.xml)
 
 **🔥 Ultra-Lightweight | 🎯 Zero-Dependency | 🛡️ Thread-Safe | 🌐 Remote-Sync | 🎨 Fluent-API**
 
@@ -143,18 +143,18 @@ EasyDB.getInstance().getLocalDatabaseFactory()
 <dependency>
     <groupId>com.github.BProbie</groupId>
     <artifactId>EasyDB</artifactId>
-    <version>1.1.0</version>
+    <version>1.2.0</version>
 </dependency>
 ```
 
 #### **2. Gradle (Kotlin DSL)**
 ```kotlin
-implementation("com.github.BProbie:EasyDB:1.1.0")
+implementation("com.github.BProbie:EasyDB:1.2.0")
 ```
 
 #### **3. Manual JAR Download**
 ```bash
-wget https://github.com/BProbie/EasyDB/releases/download/v1.1.0/EasyDB.jar
+wget https://github.com/BProbie/EasyDB/releases/download/v1.2.0/EasyDB.jar
 ```
 
 #### **4. Source Code Integration**
@@ -1106,7 +1106,7 @@ public class PerformanceTest {
 
 ## 📅 **Development Roadmap**
 
-### 🚀 **Current Features (v1.1.0)**
+### 🚀 **Current Features (v1.2.0)**
 - ✅ **Local Database** - Properties-based file storage
 - ✅ **Object Serialization** - Store any Java object
 - ✅ **Thread Safety** - Built-in read-write locks

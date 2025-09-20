@@ -1,7 +1,7 @@
 package com.probie.DataPacket.Interface;
 
-import java.util.HashMap;
 import com.probie.DataPacket.Data;
+import java.util.concurrent.ConcurrentHashMap;
 
 public interface IData {
 
@@ -40,9 +40,9 @@ public interface IData {
     Data deCode(Object object);
 
     /**
-     * 设置/获取 维护的HashMap
+     * 设置/获取 维护的 ConcurrentHashMap
      * */
-    Data setHashMap(HashMap<Object, Object> hashMap);
-    HashMap<Object, Object> getHashMap();
+    Data setMap(ConcurrentHashMap<Object, Object> concurrentHashMap);
+    ConcurrentHashMap<Object, Object> getMap();
 
 }

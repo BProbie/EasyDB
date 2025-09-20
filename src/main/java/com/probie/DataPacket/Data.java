@@ -1,15 +1,17 @@
 package com.probie.DataPacket;
 
 import java.util.Objects;
-import java.util.HashMap;
 import java.util.ArrayList;
 import com.probie.DataPacket.Interface.IData;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class Data extends DataPacket implements IData, Cloneable {
 
     @Override
     public Data put(Object key, Object value) {
-        getHashMap().put(key, value);
+        getWriteLock().lock();
+        getMap().put(key, value);
+        getWriteLock().unlock();
         return this;
     }
 
@@ -31,7 +33,10 @@ public class Data extends DataPacket implements IData, Cloneable {
 
     @Override
     public Object get(Object key) {
-        return getHashMap().get(key);
+        getReadLock().lock();
+        Object value = getMap().get(key);
+        getReadLock().unlock();
+        return value;
     }
 
     @Override
@@ -45,10 +50,11 @@ public class Data extends DataPacket implements IData, Cloneable {
 
     @Override
     public Object get(Object key, Object defaultValue) {
-        if (get(key) == null) {
+        Object value = get(key);
+        if (value == null) {
             return defaultValue;
         }
-        return get(key);
+        return value;
     }
 
     @Override
@@ -71,15 +77,19 @@ public class Data extends DataPacket implements IData, Cloneable {
 
     @Override
     public Data remove(Object... keys) {
+        getWriteLock().lock();
         for (Object key : keys) {
-            getHashMap().remove(key);
+            getMap().remove(key);
         }
+        getWriteLock().unlock();
         return this;
     }
 
     @Override
     public Data remove(Object key, Object value) {
-        getHashMap().remove(key, value);
+        getWriteLock().lock();
+        getMap().remove(key, value);
+        getWriteLock().unlock();
         return this;
     }
 
@@ -106,19 +116,19 @@ public class Data extends DataPacket implements IData, Cloneable {
 
     @Override
     public Data deCode(Object object) {
-        setHashMap(((Data) SerializeBase64.getINSTANCE().deSerializeFromBase64(object)).getHashMap());
+        setMap(((Data) SerializeBase64.getINSTANCE().deSerializeFromBase64(object)).getMap());
         return this;
     }
 
     @Override
-    public Data setHashMap(HashMap<Object, Object> hashMap) {
-        this.hashMap = hashMap;
+    public Data setMap(ConcurrentHashMap<Object, Object> concurrentHashMap) {
+        this.concurrentHashMap = concurrentHashMap;
         return this;
     }
 
     @Override
-    public HashMap<Object, Object> getHashMap() {
-        return hashMap;
+    public ConcurrentHashMap<Object, Object> getMap() {
+        return concurrentHashMap;
     }
 
     @Override
@@ -139,14 +149,14 @@ public class Data extends DataPacket implements IData, Cloneable {
             return true;
         }
         if (obj instanceof Data data) {
-            return data.getHashMap().equals(getHashMap());
+            return data.getMap().equals(getMap());
         }
         return false;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getHashMap());
+        return Objects.hash(getMap());
     }
 
     /**
@@ -155,7 +165,7 @@ public class Data extends DataPacket implements IData, Cloneable {
     @Override
     public String toString() {
         return "Data{" +
-                "hashMap=" + getHashMap() +
+                "concurrentHashMap=" + getMap() +
                 '}';
     }
 
