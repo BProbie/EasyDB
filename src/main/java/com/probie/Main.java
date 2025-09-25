@@ -4,7 +4,7 @@ package com.probie;
  * Information
  *
  * api-name: EasyDB
- * api-version: 1.2.0
+ * api-version: 1.3.0
  * api-language: java (JDK-21.0.8)
  * api-dependence: null
  * api-dependence-manager: maven
