@@ -10,6 +10,11 @@ public interface ILocalDB {
     Boolean connect();
 
     /**
+     * 导入配置文件
+     * */
+    Boolean load();
+
+    /**
      * 提交数据
      * */
     Boolean commit();
@@ -24,6 +29,12 @@ public interface ILocalDB {
      * */
     LocalDB setIsAutoCommit(Boolean isAutoCommit);
     Boolean getIsAutoCommit();
+
+    /**
+     * 是否连接
+     * */
+    LocalDB setIsConnection(Boolean isConnection);
+    Boolean getIsConnection();
 
     /**
      * 目标数据库路径

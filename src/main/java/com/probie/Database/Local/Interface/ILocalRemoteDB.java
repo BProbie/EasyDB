@@ -16,6 +16,11 @@ public interface ILocalRemoteDB {
     Boolean connect();
 
     /**
+     * 导入数据文件
+     * */
+    Boolean load();
+
+    /**
      * 提交数据
      * */
     Boolean commit();
@@ -30,6 +35,12 @@ public interface ILocalRemoteDB {
      * */
     LocalRemoteDB setIsAutoCommit(Boolean isAutoCommit);
     Boolean getIsAutoCommit();
+
+    /**
+     * 是否连接
+     * */
+    LocalRemoteDB setIsConnection(Boolean isConnection);
+    Boolean getIsConnection();
 
     /**
      * 目标数据库路径
