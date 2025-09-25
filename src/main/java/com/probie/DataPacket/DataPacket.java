@@ -8,6 +8,10 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 public class DataPacket implements IDataPacket, Serializable {
 
+    /**
+     * @param Object 任意key
+     * @param Object 任意Value
+     * */
     protected volatile ConcurrentHashMap<Object, Object> concurrentHashMap = new ConcurrentHashMap<>();
 
     private final ReentrantReadWriteLock reentrantReadWriteLock = new ReentrantReadWriteLock();

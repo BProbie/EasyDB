@@ -19,6 +19,7 @@ public class LocalDB extends LocalDatabase implements ILocalDB, Serializable, Cl
     public Boolean connect() {
         try {
             getReadLock().lock();
+            setSynFilePath(getFilePath());
             getProperties().load(new InputStreamReader(new FileInputStream(getFilePath()), StandardCharsets.UTF_8));
         } catch (IOException ignored) {
 

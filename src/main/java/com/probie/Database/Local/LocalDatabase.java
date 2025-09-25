@@ -1,6 +1,7 @@
 package com.probie.Database.Local;
 
 import java.util.ArrayList;
+import java.util.Properties;
 import com.probie.DataPacket.Data;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
@@ -12,6 +13,7 @@ public class LocalDatabase extends LocalDBProperties implements ILocalDatabase {
     private final static Lock readLock = reentrantReadWriteLock.readLock();
     private final static Lock writeLock = reentrantReadWriteLock.writeLock();
 
+    private String synFilePath;
     private String split = ", ";
 
     @Override
@@ -175,6 +177,38 @@ public class LocalDatabase extends LocalDBProperties implements ILocalDatabase {
     }
 
     @Override
+    public void setProperties(Properties properties) {
+        super.setProperties(properties);
+        getPropertiesMap().put(getSynFilePath(), properties);
+    }
+
+    @Override
+    public Properties getProperties() {
+        Properties properties = getPropertiesMap().get(getSynFilePath());
+        if (properties == null) {
+            properties = new Properties();
+            getPropertiesMap().put(getSynFilePath(), properties);
+        }
+        return properties;
+    }
+
+    @Override
+    public void setTempProperties(Properties tempProperties) {
+        super.setProperties(tempProperties);
+        getPropertiesMap().put(getSynFilePath(), tempProperties);
+    }
+
+    @Override
+    public Properties getTempProperties() {
+        Properties tempProperties = getTempPropertiesMap().get(getSynFilePath());
+        if (tempProperties == null) {
+            tempProperties = new Properties();
+            getTempPropertiesMap().put(getSynFilePath(), tempProperties);
+        }
+        return tempProperties;
+    }
+
+    @Override
     public Lock getReadLock() {
         return readLock;
     }
@@ -182,6 +216,14 @@ public class LocalDatabase extends LocalDBProperties implements ILocalDatabase {
     @Override
     public Lock getWriteLock() {
         return writeLock;
+    }
+
+    public void setSynFilePath(String synFilePath) {
+        this.synFilePath = synFilePath;
+    }
+
+    public String getSynFilePath() {
+        return synFilePath;
     }
 
     @Override

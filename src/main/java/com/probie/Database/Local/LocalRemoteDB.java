@@ -39,6 +39,7 @@ public class LocalRemoteDB extends LocalDatabase implements ILocalRemoteDB, Seri
     public Boolean connect() {
         try {
             getReadLock().lock();
+            setSynFilePath(getRemoteFilePath());
             getProperties().load(new InputStreamReader(new FileInputStream(getFilePath()), StandardCharsets.UTF_8));
             getReadLock().unlock();
         } catch (IOException ignored) {}
