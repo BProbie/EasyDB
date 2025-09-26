@@ -2,15 +2,13 @@ package com.probie.Database.Local;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
+import java.util.Properties;
+
 import com.probie.Database.Local.Interface.ILocalRemoteDB;
 
 public class LocalRemoteDB extends LocalDatabase implements ILocalRemoteDB, Serializable, Closeable, Cloneable {
 
-    private Boolean isAutoCommit = true;
-    private Boolean isConnection = false;
-
     private String remoteFilePath;
-    private String filePath = getCurrentPath()+"\\"+"LocalRemoteDB.properties";
     private String comment = "A Local Database Of LocalRemoteDB Basic On Properties";
 
     public LocalRemoteDB(String remoteFilePath) {
@@ -39,8 +37,12 @@ public class LocalRemoteDB extends LocalDatabase implements ILocalRemoteDB, Seri
 
     @Override
     public Boolean connect() {
-        if (!getIsConnection()) return load();
-        return false;
+        if (!getIsConnection()) {
+            if (getPropertiesMap().get(getSynFilePath()) == null) {
+                return load();
+            }
+        }
+        return true;
     }
 
     @Override
@@ -48,9 +50,12 @@ public class LocalRemoteDB extends LocalDatabase implements ILocalRemoteDB, Seri
         try {
             getReadLock().lock();
             getProperties().load(new InputStreamReader(new FileInputStream(getFilePath()), StandardCharsets.UTF_8));
-            getReadLock().unlock();
             setIsConnection(true);
-        } catch (IOException ignored) {}
+        } catch (IOException ignored) {
+
+        } finally {
+            getReadLock().unlock();
+        }
         return new File(getFilePath()).exists();
     }
 
@@ -60,41 +65,23 @@ public class LocalRemoteDB extends LocalDatabase implements ILocalRemoteDB, Seri
         try {
             getWriteLock().lock();
             getProperties().store(new FileWriter(getFilePath()), getComment());
-            getWriteLock().unlock();
         } catch (IOException ioException) {
             throw new RuntimeException(ioException);
+        } finally {
+            getWriteLock().unlock();
         }
         return new File(getFilePath()).exists();
     }
 
     @Override
-    public Boolean backroll() {
+    public Boolean rollback() {
         getWriteLock().lock();
-        setProperties(getTempProperties());
+        Properties temp = getTempProperties();
+        setTempProperties(getProperties());
+        setProperties(temp);
+        commit();
         getWriteLock().unlock();
         return true;
-    }
-
-    @Override
-    public LocalRemoteDB setIsAutoCommit(Boolean isAutoCommit) {
-        this.isAutoCommit = isAutoCommit;
-        return this;
-    }
-
-    @Override
-    public Boolean getIsAutoCommit() {
-        return isAutoCommit;
-    }
-
-    @Override
-    public LocalRemoteDB setIsConnection(Boolean isConnection) {
-        this.isConnection = isConnection;
-        return this;
-    }
-
-    @Override
-    public Boolean getIsConnection() {
-        return isConnection;
     }
 
     @Override
@@ -109,26 +96,6 @@ public class LocalRemoteDB extends LocalDatabase implements ILocalRemoteDB, Seri
     @Override
     public String getRemoteFilePath() {
         return remoteFilePath;
-    }
-
-    @Override
-    public LocalRemoteDB setFilePath(String filePath) {
-        if (!getFilePath().equals(filePath)) {
-            setIsConnection(false);
-            this.filePath = filePath;
-            setSynFilePath(getFilePath());
-        }
-        return this;
-    }
-
-    @Override
-    public String getFilePath() {
-        return filePath;
-    }
-
-    @Override
-    public String getPath() {
-        return new File(getFilePath()).getParentFile().getAbsolutePath();
     }
 
     @Override

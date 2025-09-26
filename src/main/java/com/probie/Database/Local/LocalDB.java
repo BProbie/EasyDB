@@ -2,14 +2,12 @@ package com.probie.Database.Local;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
+import java.util.Properties;
+
 import com.probie.Database.Local.Interface.ILocalDB;
 
 public class LocalDB extends LocalDatabase implements ILocalDB, Serializable, Closeable, Cloneable {
 
-    private Boolean isAutoCommit = true;
-    private Boolean isConnection = false;
-
-    private String filePath = getCurrentPath()+"\\"+"LocalDB.properties";
     private String comment = "A Local Database Of LocalDB Basic On Properties";
 
     public LocalDB() {
@@ -19,8 +17,12 @@ public class LocalDB extends LocalDatabase implements ILocalDB, Serializable, Cl
 
     @Override
     public Boolean connect() {
-        if (!getIsConnection()) return load();
-        return false;
+        if (!getIsConnection()) {
+            if (getPropertiesMap().get(getSynFilePath()) == null) {
+                return load();
+            }
+        }
+        return true;
     }
 
     @Override
@@ -54,56 +56,12 @@ public class LocalDB extends LocalDatabase implements ILocalDB, Serializable, Cl
     @Override
     public Boolean rollback() {
         getWriteLock().lock();
-        setProperties(getTempProperties());
+        Properties temp = getTempProperties();
+        setTempProperties(getProperties());
+        setProperties(temp);
+        commit();
         getWriteLock().unlock();
         return true;
-    }
-
-    @Override
-    public LocalDB setIsAutoCommit(Boolean isAutoCommit) {
-        this.isAutoCommit = isAutoCommit;
-        return this;
-    }
-
-    @Override
-    public Boolean getIsAutoCommit() {
-        return isAutoCommit;
-    }
-
-    @Override
-    public LocalDB setIsConnection(Boolean isConnection) {
-        this.isConnection = isConnection;
-        return this;
-    }
-
-    @Override
-    public Boolean getIsConnection() {
-        return isConnection;
-    }
-
-    @Override
-    public LocalDB setFilePath(String filePath) {
-        if (!getFileName().equals(filePath)) {
-            setIsConnection(false);
-            this.filePath = filePath;
-            setSynFilePath(getFilePath());
-        }
-        return this;
-    }
-
-    @Override
-    public String getFilePath() {
-        return filePath;
-    }
-
-    @Override
-    public String getPath() {
-        return new File(getFilePath()).getParentFile().getAbsolutePath();
-    }
-
-    @Override
-    public String getFileName() {
-        return new File(getFilePath()).getName();
     }
 
     @Override

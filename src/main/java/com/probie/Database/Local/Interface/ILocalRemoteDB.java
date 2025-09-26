@@ -28,37 +28,13 @@ public interface ILocalRemoteDB {
     /**
      * 回滚到上一次提交
      * */
-    Boolean backroll();
-
-    /**
-     * 自动提交
-     * */
-    LocalRemoteDB setIsAutoCommit(Boolean isAutoCommit);
-    Boolean getIsAutoCommit();
-
-    /**
-     * 是否连接
-     * */
-    LocalRemoteDB setIsConnection(Boolean isConnection);
-    Boolean getIsConnection();
+    Boolean rollback();
 
     /**
      * 目标数据库路径
      * */
     LocalRemoteDB setRemoteFilePath(String remoteFilePath);
     String getRemoteFilePath();
-
-    /**
-     * 保存数据库路径
-     * */
-    LocalRemoteDB setFilePath(String filePath);
-    String getFilePath();
-
-    /**
-     * 获取路径、文件名
-     * */
-    String getPath();
-    String getFileName();
 
     /**
      * 设置、获取备注

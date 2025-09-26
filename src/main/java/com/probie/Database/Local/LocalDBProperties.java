@@ -21,19 +21,10 @@ public class LocalDBProperties extends LocalDBFile implements ILocalDBProperties
     private Properties properties = new Properties();
     private Properties tempProperties = new Properties();
 
-    @Override
-    public void setPropertiesMap(ConcurrentHashMap<String, Properties> propertiesMap) {
-        LocalDBProperties.propertiesMap = propertiesMap;
-    }
 
     @Override
     public ConcurrentHashMap<String, Properties> getPropertiesMap() {
         return propertiesMap;
-    }
-
-    @Override
-    public void setTempPropertiesMap(ConcurrentHashMap<String, Properties> tempPropertiesMap) {
-        LocalDBProperties.tempPropertiesMap = tempPropertiesMap;
     }
 
     @Override

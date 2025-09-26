@@ -1,5 +1,6 @@
 package com.probie.Database.Local;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Properties;
 import com.probie.DataPacket.Data;
@@ -13,6 +14,10 @@ public class LocalDatabase extends LocalDBProperties implements ILocalDatabase {
     private final static Lock readLock = reentrantReadWriteLock.readLock();
     private final static Lock writeLock = reentrantReadWriteLock.writeLock();
 
+    private Boolean isConnection = false;
+    private Boolean isAutoCommit = true;
+
+    private String filePath = getCurrentPath()+"\\"+"LocalDB.properties";
     private String synFilePath;
     private String split = ", ";
 
@@ -218,10 +223,56 @@ public class LocalDatabase extends LocalDBProperties implements ILocalDatabase {
         return writeLock;
     }
 
+    @Override
+    public void setIsConnection(Boolean isConnection) {
+        this.isConnection = isConnection;
+    }
+
+    @Override
+    public Boolean getIsConnection() {
+        return isConnection;
+    }
+
+    @Override
+    public void setIsAutoCommit(Boolean isAutoCommit) {
+        this.isAutoCommit = isAutoCommit;
+    }
+
+    @Override
+    public Boolean getIsAutoCommit() {
+        return isAutoCommit;
+    }
+
+    @Override
+    public void setFilePath(String filePath) {
+        if (!getFileName().equals(filePath)) {
+            setIsConnection(false);
+            this.filePath = filePath;
+            setSynFilePath(getFilePath());
+        }
+    }
+
+    @Override
+    public String getFilePath() {
+        return filePath;
+    }
+
+    @Override
+    public String getPath() {
+        return new File(getFilePath()).getParentFile().getAbsolutePath();
+    }
+
+    @Override
+    public String getFileName() {
+        return new File(getFilePath()).getName();
+    }
+
+    @Override
     public void setSynFilePath(String synFilePath) {
         this.synFilePath = synFilePath;
     }
 
+    @Override
     public String getSynFilePath() {
         return synFilePath;
     }

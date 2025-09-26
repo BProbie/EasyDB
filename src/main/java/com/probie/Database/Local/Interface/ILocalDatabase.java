@@ -54,10 +54,39 @@ public interface ILocalDatabase {
     Lock getWriteLock();
 
     /**
+     * 是否连接
+     * */
+    void setIsConnection(Boolean isConnection);
+    Boolean getIsConnection();
+
+    /**
+     * 自动提交
+     * */
+    void setIsAutoCommit(Boolean isAutoCommit);
+    Boolean getIsAutoCommit();
+
+    /**
+     * 目标数据库路径
+     * */
+    void setFilePath(String filePath);
+    String getFilePath();
+
+    /**
+     * 获取路径、文件名
+     * */
+    String getPath();
+    String getFileName();
+
+    /**
+     * 同步路径
+     * */
+    void setSynFilePath(String synFilePath);
+    String getSynFilePath();
+
+    /**
      * 切割符号
      * */
     void setSplit(String split);
     String getSplit();
-
 
 }

@@ -25,30 +25,6 @@ public interface ILocalDB {
     Boolean rollback();
 
     /**
-     * 自动提交
-     * */
-    LocalDB setIsAutoCommit(Boolean isAutoCommit);
-    Boolean getIsAutoCommit();
-
-    /**
-     * 是否连接
-     * */
-    LocalDB setIsConnection(Boolean isConnection);
-    Boolean getIsConnection();
-
-    /**
-     * 目标数据库路径
-     * */
-    LocalDB setFilePath(String filePath);
-    String getFilePath();
-
-    /**
-     * 获取路径、文件名
-     * */
-    String getPath();
-    String getFileName();
-
-    /**
      * 设置、获取备注
      * */
     LocalDB setComment(String comment);

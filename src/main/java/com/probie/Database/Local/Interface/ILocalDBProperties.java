@@ -6,25 +6,23 @@ import java.util.concurrent.ConcurrentHashMap;
 public interface ILocalDBProperties {
 
     /**
-     * 维护一个全局PropertiesMap
+     * 维护一个全局 PropertiesMap
      * */
-    void setPropertiesMap(ConcurrentHashMap<String, Properties> propertiesMap);
     ConcurrentHashMap<String, Properties> getPropertiesMap();
 
     /**
-     * 维护一个全局TempPropertiesMap
+     * 维护一个全局 TempPropertiesMap
      * */
-    void setTempPropertiesMap(ConcurrentHashMap<String, Properties> tempPropertiesMap);
     ConcurrentHashMap<String, Properties> getTempPropertiesMap();
 
     /**
-     * 设置/获取 维护的Properties对象
+     * 设置/获取 维护的 Properties 对象
      * */
     void setProperties(Properties properties);
     Properties getProperties();
 
     /**
-     * 设置/获取 维护的TempProperties对象
+     * 设置/获取 维护的 TempProperties 对象
      * */
     void setTempProperties(Properties tempProperties);
     Properties getTempProperties();
