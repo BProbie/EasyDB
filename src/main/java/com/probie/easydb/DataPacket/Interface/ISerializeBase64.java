@@ -1,0 +1,35 @@
+package com.probie.easydb.DataPacket.Interface;
+
+import java.io.*;
+import java.util.Base64;
+
+public interface ISerializeBase64 {
+
+    /**
+     * 编码: Object -> 序列化 -> Base64编码 -> 转String
+     * @param object 任意对象
+     * */
+    default Object enSerializeToBase64(Object object) {
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        try (ObjectOutputStream objectOutputStream = new ObjectOutputStream(byteArrayOutputStream)) {
+            objectOutputStream.writeObject(object);
+        } catch (IOException ioException) {
+            throw new RuntimeException(ioException);
+        }
+        return Base64.getEncoder().encodeToString(byteArrayOutputStream.toByteArray());
+    }
+
+    /**
+     * 解码: String -> Byte -> Base64解码 -> 反序列化 -> Object
+     * @param object 任意数据
+     * */
+    default Object deSerializeFromBase64(Object object) {
+        byte[] bytes = Base64.getDecoder().decode(object.toString());
+        try (ObjectInputStream objectInputStream = new ObjectInputStream(new ByteArrayInputStream(bytes))) {
+            return objectInputStream.readObject();
+        } catch (IOException | ClassNotFoundException exception) {
+            throw new RuntimeException(exception);
+        }
+    }
+
+}
