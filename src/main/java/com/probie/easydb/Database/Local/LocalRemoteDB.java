@@ -1,9 +1,8 @@
 package com.probie.easydb.Database.Local;
 
 import java.io.*;
-import java.nio.charset.StandardCharsets;
 import java.util.Properties;
-
+import java.nio.charset.StandardCharsets;
 import com.probie.easydb.Database.Local.Interface.ILocalRemoteDB;
 
 public class LocalRemoteDB extends LocalDatabase implements ILocalRemoteDB, Serializable, Closeable, Cloneable {

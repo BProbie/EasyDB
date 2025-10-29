@@ -3,8 +3,8 @@ package com.probie.easydb.Database.Local;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Properties;
-import com.probie.easydb.DataPacket.Data;
 import java.util.concurrent.locks.Lock;
+import com.probie.easydb.DataPacket.Data;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 import com.probie.easydb.Database.Local.Interface.ILocalDatabase;
 

@@ -2,8 +2,8 @@ package com.probie.easydb.DataPacket;
 
 import java.util.Objects;
 import java.util.ArrayList;
-import com.probie.easydb.DataPacket.Interface.IData;
 import java.util.concurrent.ConcurrentHashMap;
+import com.probie.easydb.DataPacket.Interface.IData;
 
 public class Data extends DataPacket implements IData, Cloneable {
 

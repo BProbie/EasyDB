@@ -1,3 +1,6 @@
 package com.probie.easydb.Database.Remote.Interface;
 
-public interface ISupabase {}
+public interface ISupabase {
+    // TODO
+
+}

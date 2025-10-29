@@ -3,8 +3,8 @@ package com.probie.easydb.DataPacket;
 import java.io.Serializable;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.ConcurrentHashMap;
-import com.probie.easydb.DataPacket.Interface.IDataPacket;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
+import com.probie.easydb.DataPacket.Interface.IDataPacket;
 
 public class DataPacket implements IDataPacket, Serializable {
 
