@@ -17,8 +17,8 @@ public class LocalDatabase extends LocalDBProperties implements ILocalDatabase {
     private Boolean isConnection = false;
     private Boolean isAutoCommit = true;
 
-    private String filePath = getCurrentPath()+"\\"+"LocalDB.properties";
-    private String synFilePath;
+    private String fullFilePath = getCurrentPath()+"\\"+"LocalDB.properties";
+    private String synFullFilePath;
     private String split = ", ";
 
     @Override
@@ -184,15 +184,15 @@ public class LocalDatabase extends LocalDBProperties implements ILocalDatabase {
     @Override
     public void setProperties(Properties properties) {
         super.setProperties(properties);
-        getPropertiesMap().put(getSynFilePath(), properties);
+        getPropertiesMap().put(getSynFullFilePath(), properties);
     }
 
     @Override
     public Properties getProperties() {
-        Properties properties = getPropertiesMap().get(getSynFilePath());
+        Properties properties = getPropertiesMap().get(getSynFullFilePath());
         if (properties == null) {
             properties = new Properties();
-            getPropertiesMap().put(getSynFilePath(), properties);
+            getPropertiesMap().put(getSynFullFilePath(), properties);
         }
         return properties;
     }
@@ -200,15 +200,15 @@ public class LocalDatabase extends LocalDBProperties implements ILocalDatabase {
     @Override
     public void setTempProperties(Properties tempProperties) {
         super.setProperties(tempProperties);
-        getPropertiesMap().put(getSynFilePath(), tempProperties);
+        getPropertiesMap().put(getSynFullFilePath(), tempProperties);
     }
 
     @Override
     public Properties getTempProperties() {
-        Properties tempProperties = getTempPropertiesMap().get(getSynFilePath());
+        Properties tempProperties = getTempPropertiesMap().get(getSynFullFilePath());
         if (tempProperties == null) {
             tempProperties = new Properties();
-            getTempPropertiesMap().put(getSynFilePath(), tempProperties);
+            getTempPropertiesMap().put(getSynFullFilePath(), tempProperties);
         }
         return tempProperties;
     }
@@ -244,37 +244,37 @@ public class LocalDatabase extends LocalDBProperties implements ILocalDatabase {
     }
 
     @Override
-    public void setFilePath(String filePath) {
+    public void setFullFilePath(String filePath) {
         if (!getFileName().equals(filePath)) {
             setIsConnection(false);
-            this.filePath = filePath;
-            setSynFilePath(getFilePath());
+            this.fullFilePath = filePath;
+            setSynFullFilePath(getFullFilePath());
         }
     }
 
     @Override
-    public String getFilePath() {
-        return filePath;
+    public String getFullFilePath() {
+        return fullFilePath;
     }
 
     @Override
     public String getPath() {
-        return new File(getFilePath()).getParentFile().getAbsolutePath();
+        return new File(getFullFilePath()).getParentFile().getAbsolutePath();
     }
 
     @Override
     public String getFileName() {
-        return new File(getFilePath()).getName();
+        return new File(getFullFilePath()).getName();
     }
 
     @Override
-    public void setSynFilePath(String synFilePath) {
-        this.synFilePath = synFilePath;
+    public void setSynFullFilePath(String synFilePath) {
+        this.synFullFilePath = synFilePath;
     }
 
     @Override
-    public String getSynFilePath() {
-        return synFilePath;
+    public String getSynFullFilePath() {
+        return synFullFilePath;
     }
 
     @Override

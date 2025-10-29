@@ -4,7 +4,7 @@ package com.probie.easydb;
  * Information
  *
  * api-name: EasyDB
- * api-version: 1.6.0
+ * api-version: 2.0.0
  * api-language: java (JDK-21.0.8)
  * api-dependence: null
  * api-dependence-manager: maven
@@ -26,11 +26,11 @@ public class Main {
 //        本地数据库
 //        LocalDB localDB = EasyDB.getInstance().getLocalDatabaseFactory().buildLocalDB().setComment("localDB");
 //        if (localDB.connect()) {
-//        localDB.set("date","yes");
-//        localDB.set("probie",new Data().put("name","probie").put("age",18));
-//        localDB.commit();
-//            System.out.println(localDB.get("date"));
-//            System.out.println(new Data().deCode(localDB.get("probie")));
+//          localDB.set("date","yes");
+//          localDB.set("probie",new Data().put("name","probie").put("age",18));
+//          localDB.commit();
+//          System.out.println(localDB.get("date"));
+//          System.out.println(new Data().deCode(localDB.get("probie")));
 //        }
 //
 //        本地远程数据库
@@ -44,6 +44,13 @@ public class Main {
 //            System.out.println(new Data().deCode(localRemoteDB.get("probie")));
 //        }
 //
+//        本地包内数据库
+//        LocalDB localDB = EasyDB.getInstance().getLocalDatabaseFactory().buildLocalDB();
+//        if (localDB.connect(ClassLoader.getSystemResourceAsStream("EasyDB.properties"))) {
+//          System.out.println(localDB.get("date"));
+//          System.out.println(new Data().deCode(localDB.get("probie")));
+//        }
+//
 //        远程数据库
 //        RemoteDB remoteDB = EasyDB.getInstance().getRemoteDatabaseFactory().buildRemoteDB();
 //        remoteDB.runPreparedStatementExecute("");
@@ -53,6 +60,7 @@ public class Main {
 //        supabase.runPreparedStatementUpdate("");
 //
 //        TODO
+//
 //
 //    }
 

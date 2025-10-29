@@ -68,8 +68,8 @@ public interface ILocalDatabase {
     /**
      * 目标数据库路径
      * */
-    void setFilePath(String filePath);
-    String getFilePath();
+    void setFullFilePath(String filePath);
+    String getFullFilePath();
 
     /**
      * 获取路径、文件名
@@ -80,8 +80,8 @@ public interface ILocalDatabase {
     /**
      * 同步路径
      * */
-    void setSynFilePath(String synFilePath);
-    String getSynFilePath();
+    void setSynFullFilePath(String synFilePath);
+    String getSynFullFilePath();
 
     /**
      * 切割符号
