@@ -18,9 +18,8 @@ public class LocalDB extends LocalDatabase implements ILocalDB, Serializable, Cl
     public Boolean connect() {
         try {
             return connect(new InputStreamReader(new FileInputStream(getFullFilePath()), StandardCharsets.UTF_8));
-        } catch (FileNotFoundException fileNotFoundException) {
-            throw new RuntimeException(fileNotFoundException);
-        }
+        } catch (FileNotFoundException ignored) {}
+        return false;
     }
 
     @Override
@@ -47,9 +46,8 @@ public class LocalDB extends LocalDatabase implements ILocalDB, Serializable, Cl
     public Boolean load() {
         try {
             return load(new InputStreamReader(new FileInputStream(getFullFilePath()), StandardCharsets.UTF_8));
-        } catch (FileNotFoundException fileNotFoundException) {
-            throw new RuntimeException(fileNotFoundException);
-        }
+        } catch (FileNotFoundException ignored) {}
+        return false;
     }
 
     @Override
