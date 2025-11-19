@@ -32,7 +32,6 @@ public interface ILocalDBRemote {
             // 下载文件
             if (file.getParentFile().exists()) {
                 try {
-                    System.out.println(file.getAbsolutePath());
                     Files.copy(inputStream, file.toPath(), StandardCopyOption.REPLACE_EXISTING);
                 } catch (IOException ioException) {
                     throw new RuntimeException(ioException);

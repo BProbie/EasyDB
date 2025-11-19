@@ -1,12 +1,10 @@
 package com.probie.easydb;
 
-import com.probie.easydb.Database.Local.LocalRemoteDB;
-
 /**
  * Information
  *
  * api-name: EasyDB
- * api-version: 2.4.0
+ * api-version: 2.5.0
  * api-language: java (JDK-21.0.8)
  * api-dependence: null
  * api-dependence-manager: maven
@@ -18,12 +16,7 @@ import com.probie.easydb.Database.Local.LocalRemoteDB;
 public class Main {
 
     public static void main(String[] args) {
-        LocalRemoteDB localRemoteDB = EasyDB.getInstance().getLocalDatabaseFactory().buildLocalRemoteDB("https://raw.githubusercontent.com/BProbie/DailyPaper/refs/heads/master/test.properties");
-        System.out.println(localRemoteDB.getFullFilePath());
-        localRemoteDB.downloadDatabase();
-        if (localRemoteDB.connect()) {
-            System.out.println(localRemoteDB.get("B"));
-        }
+
     }
 
 //    public static void main(String[] args) {
