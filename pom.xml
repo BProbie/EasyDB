@@ -12,7 +12,7 @@
 
     <groupId>com.github.BProbie</groupId>
     <artifactId>EasyDB</artifactId>
-    <version>2.3.0</version>
+    <version>2.4.0</version>
 
     <name>EasyDB</name>
     <description>轻量级Java数据库框架</description>

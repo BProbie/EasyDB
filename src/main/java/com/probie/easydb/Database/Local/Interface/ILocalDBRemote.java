@@ -22,19 +22,7 @@ public interface ILocalDBRemote {
         // 获取远程数据，存入缓存
         try (InputStream inputStream = new URL(remoteFile.toString()).openConnection().getInputStream()) {
             // 获取文件对象
-            File file;
-            if (localFile instanceof File targetFile) {
-                if (!targetFile.isFile()) {
-                    targetFile = new File(targetFile.getAbsolutePath()+"\\"+remoteFile.toString().split("/")[remoteFile.toString().split("/").length-1]);
-                }
-                file = targetFile;
-            } else {
-                File targetFile = new File(localFile.toString());
-                if (!targetFile.isFile()) {
-                    targetFile = new File(targetFile.getAbsolutePath()+"\\"+remoteFile.toString().split("/")[remoteFile.toString().split("/").length-1]);
-                }
-                file = targetFile;
-            }
+            File file = localFile instanceof File? (File) localFile : new File(localFile.toString());
 
             // 创建路径
             if (!file.getParentFile().exists()) {
