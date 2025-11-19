@@ -11,9 +11,9 @@ public class LocalRemoteDB extends LocalDatabase implements ILocalRemoteDB, Seri
     private String comment = "A Local Database Of LocalRemoteDB Basic On Properties";
 
     public LocalRemoteDB(String remoteFilePath) {
-
         setSynFullFilePath(getFullFilePath());
         this.remoteFilePath = remoteFilePath;
+        setFullFilePath(getFullFilePath().replace(getFileName(), "")+"\\"+getRemoteFilePath().substring(getRemoteFilePath().lastIndexOf("\\")+1));
         Runtime.getRuntime().addShutdownHook(new Thread(this::close));
     }
 
