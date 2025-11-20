@@ -17,7 +17,7 @@ public class LocalDatabase extends LocalDBProperties implements ILocalDatabase {
     private Boolean isConnection = false;
     private Boolean isAutoCommit = true;
 
-    private String fullFilePath = getCurrentPath()+"\\"+"LocalDB.properties";
+    private String fullFilePath = getCurrentPath()+File.separator+"LocalDB.properties";
     private String synFullFilePath;
     private String split = ", ";
 

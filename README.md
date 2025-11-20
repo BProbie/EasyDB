@@ -158,7 +158,7 @@ Add the following dependency to your Maven project:
 <dependency>
     <groupId>com.github.BProbie</groupId>
     <artifactId>EasyDB</artifactId>
-    <version>2.5.0</version>
+    <version>2.5.1</version>
 </dependency>
 ```
 
