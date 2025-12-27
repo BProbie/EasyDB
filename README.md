@@ -155,10 +155,15 @@ public Object get(Object key) {
 Add the following dependency to your Maven project:
 
 ```xml
+<repository>
+	<id>jitpack.io</id>
+	<url>https://jitpack.io</url>
+</repository>
+
 <dependency>
     <groupId>com.github.BProbie</groupId>
     <artifactId>EasyDB</artifactId>
-    <version>2.6.0</version>
+    <version>2.7</version>
 </dependency>
 ```
 

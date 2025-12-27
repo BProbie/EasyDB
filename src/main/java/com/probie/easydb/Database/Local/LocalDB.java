@@ -7,7 +7,7 @@ import com.probie.easydb.Database.Local.Interface.ILocalDB;
 
 public class LocalDB extends LocalDatabase implements ILocalDB, Serializable, Closeable, Cloneable {
 
-    private String comment = "A Local Database Of LocalDB Basic On Properties";
+    private String comment = "A Local Database Of LocalDB From EasyDB Basic On Properties";
 
     public LocalDB() {
         setSynFullFilePath(getFullFilePath());
@@ -36,7 +36,9 @@ public class LocalDB extends LocalDatabase implements ILocalDB, Serializable, Cl
     public Boolean connect(InputStreamReader inputStreamReader) {
         if (!getIsConnection()) {
             if (getPropertiesMap().get(getSynFullFilePath()) == null) {
-                return load(inputStreamReader);
+                boolean isLoad = load(inputStreamReader);
+                try {inputStreamReader.close();} catch (IOException ignored) {}
+                return isLoad;
             }
         }
         return true;

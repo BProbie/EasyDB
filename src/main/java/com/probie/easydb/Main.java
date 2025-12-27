@@ -2,15 +2,15 @@ package com.probie.easydb;
 
 /**
  * Information
- *
- * api-name: EasyDB
- * api-version: 2.6.0
- * api-language: java (JDK-21.0.8)
- * api-dependence: null
- * api-dependence-manager: maven
- *
- * @author probie
- * github: <a href="https://github.com/BProbie"> EasyDB-Github </a>
+ * <p>
+ * API-Name: EasyDB
+ * API-Version: 2.7 (Stable)
+ * API-Language: Java (JDK-21.0.8)
+ * API-Dependence-Manager: Maven
+ * API-Dependence: Null
+ * <p>
+ * Author: Probie
+ * GitHub: <a href="https://github.com/BProbie"> EasyDB-Github </a>
  * */
 
 public class Main {

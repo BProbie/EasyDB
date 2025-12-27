@@ -6,17 +6,10 @@ import com.probie.easydb.Database.Remote.RemoteDatabaseFactory;
 
 public class EasyDB implements IEasyDB {
 
+    private final String NAME = "EasyDB";
+    private final String VERSION = "2.7";
+
     private volatile static EasyDB INSTANCE;
-
-    @Override
-    public LocalDatabaseFactory getLocalDatabaseFactory() {
-        return LocalDatabaseFactory.getInstance();
-    }
-
-    @Override
-    public RemoteDatabaseFactory getRemoteDatabaseFactory() {
-        return RemoteDatabaseFactory.getInstance();
-    }
 
     /**
      * 获取 EasyDB 的单例对象
@@ -26,6 +19,16 @@ public class EasyDB implements IEasyDB {
             INSTANCE = new EasyDB();
         }
         return INSTANCE;
+    }
+
+    @Override
+    public LocalDatabaseFactory getLocalDatabaseFactory() {
+        return LocalDatabaseFactory.getInstance();
+    }
+
+    @Override
+    public RemoteDatabaseFactory getRemoteDatabaseFactory() {
+        return RemoteDatabaseFactory.getInstance();
     }
 
 }
