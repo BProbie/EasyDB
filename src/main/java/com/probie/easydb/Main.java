@@ -4,13 +4,13 @@ package com.probie.easydb;
  * Information
  *
  * api-name: EasyDB
- * api-version: 2.5.1
+ * api-version: 2.6.0
  * api-language: java (JDK-21.0.8)
  * api-dependence: null
  * api-dependence-manager: maven
  *
  * @author probie
- * github: <a href="https://github.com/BProbie">EasyDB-Github</a>
+ * github: <a href="https://github.com/BProbie"> EasyDB-Github </a>
  * */
 
 public class Main {
@@ -21,7 +21,7 @@ public class Main {
 
 //    public static void main(String[] args) {
 //
-//        EG!
+//        EG!!!
 //
 //        本地数据库
 //        LocalDB localDB = EasyDB.getInstance().getLocalDatabaseFactory().buildLocalDB().setComment("localDB");
@@ -29,6 +29,13 @@ public class Main {
 //          localDB.set("date","yes");
 //          localDB.set("probie",new Data().put("name","probie").put("age",18));
 //          localDB.commit();
+//          System.out.println(localDB.get("date"));
+//          System.out.println(new Data().deCode(localDB.get("probie")));
+//        }
+//
+//        本地包内数据库
+//        LocalDB localDB = EasyDB.getInstance().getLocalDatabaseFactory().buildLocalDB();
+//        if (localDB.connect(ClassLoader.getSystemResourceAsStream("EasyDB.properties"))) {
 //          System.out.println(localDB.get("date"));
 //          System.out.println(new Data().deCode(localDB.get("probie")));
 //        }
@@ -44,18 +51,11 @@ public class Main {
 //            System.out.println(new Data().deCode(localRemoteDB.get("probie")));
 //        }
 //
-//        本地包内数据库
-//        LocalDB localDB = EasyDB.getInstance().getLocalDatabaseFactory().buildLocalDB();
-//        if (localDB.connect(ClassLoader.getSystemResourceAsStream("EasyDB.properties"))) {
-//          System.out.println(localDB.get("date"));
-//          System.out.println(new Data().deCode(localDB.get("probie")));
-//        }
-//
 //        远程数据库
 //        RemoteDB remoteDB = EasyDB.getInstance().getRemoteDatabaseFactory().buildRemoteDB();
 //        remoteDB.runPreparedStatementExecute("");
 //
-//        远程Supabase数据库
+//        远程 Supabase 数据库
 //        Supabase supabase = EasyDB.getInstance().getRemoteDatabaseFactory().buildSupabase();
 //        supabase.runPreparedStatementUpdate("");
 //

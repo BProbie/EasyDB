@@ -72,7 +72,7 @@ public interface ILocalDatabase {
     String getFullFilePath();
 
     /**
-     * 获取路径、文件名
+     * 获取路径以及文件名
      * */
     String getPath();
     String getFileName();

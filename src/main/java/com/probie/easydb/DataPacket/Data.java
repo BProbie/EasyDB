@@ -7,6 +7,8 @@ import com.probie.easydb.DataPacket.Interface.IData;
 
 public class Data extends DataPacket implements IData, Cloneable {
 
+    private static final long serialVersionUID = 1L;
+
     @Override
     public Data put(Object key, Object value) {
         getWriteLock().lock();
@@ -141,7 +143,7 @@ public class Data extends DataPacket implements IData, Cloneable {
     }
 
     /**
-     * 重构Hash值判断逻辑
+     * 重构 Hash 值判断逻辑
      * */
     @Override
     public boolean equals(Object obj) {
@@ -160,7 +162,7 @@ public class Data extends DataPacket implements IData, Cloneable {
     }
 
     /**
-     * 重构toString
+     * 重构 toString
      * */
     @Override
     public String toString() {

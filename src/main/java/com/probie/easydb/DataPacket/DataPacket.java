@@ -9,8 +9,8 @@ import com.probie.easydb.DataPacket.Interface.IDataPacket;
 public class DataPacket implements IDataPacket, Serializable {
 
     /**
-     * @param Object 任意key
-     * @param Object 任意Value
+     * @param Object 任意 key
+     * @param Object 任意 Value
      * */
     protected volatile ConcurrentHashMap<Object, Object> concurrentHashMap = new ConcurrentHashMap<>();
 
