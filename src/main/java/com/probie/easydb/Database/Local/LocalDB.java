@@ -29,6 +29,11 @@ public class LocalDB extends LocalDatabase implements ILocalDB, Serializable, Cl
                 return load(inputStream);
             }
         }
+        if (inputStream != null) {
+            try {
+                inputStream.close();
+            } catch (IOException ignored) {}
+        }
         return true;
     }
 
@@ -36,10 +41,13 @@ public class LocalDB extends LocalDatabase implements ILocalDB, Serializable, Cl
     public Boolean connect(InputStreamReader inputStreamReader) {
         if (!getIsConnection()) {
             if (getPropertiesMap().get(getSynFullFilePath()) == null) {
-                boolean isLoad = load(inputStreamReader);
-                try {inputStreamReader.close();} catch (IOException ignored) {}
-                return isLoad;
+                return load(inputStreamReader);
             }
+        }
+        if (inputStreamReader != null) {
+            try {
+                inputStreamReader.close();
+            } catch (IOException ignored) {}
         }
         return true;
     }
@@ -58,9 +66,14 @@ public class LocalDB extends LocalDatabase implements ILocalDB, Serializable, Cl
             getReadLock().lock();
             getProperties().load(inputStream);
             setIsConnection(true);
-        } catch (IOException ignored) {
-
-        } finally {
+        }
+        catch (IOException ignored) {}
+        finally {
+            if (inputStream != null) {
+                try {
+                    inputStream.close();
+                } catch (IOException ignored) {}
+            }
             getReadLock().unlock();
         }
         return getIsConnection();
@@ -70,11 +83,16 @@ public class LocalDB extends LocalDatabase implements ILocalDB, Serializable, Cl
     public Boolean load(InputStreamReader inputStreamReader) {
         try {
             getReadLock().lock();
-            getProperties().load(new InputStreamReader(new FileInputStream(getFullFilePath()), StandardCharsets.UTF_8));
+            getProperties().load(inputStreamReader);
             setIsConnection(true);
-        } catch (IOException ignored) {
-
-        } finally {
+        }
+        catch (IOException ignored) {}
+        finally {
+            if (inputStreamReader != null) {
+                try {
+                    inputStreamReader.close();
+                } catch (IOException ignored) {}
+            }
             getReadLock().unlock();
         }
         return new File(getFullFilePath()).exists();
@@ -83,9 +101,9 @@ public class LocalDB extends LocalDatabase implements ILocalDB, Serializable, Cl
     @Override
     public Boolean commit() {
         setTempProperties(getProperties());
-        try {
+        try (FileWriter fileWriter = new FileWriter(getFullFilePath())) {
             getWriteLock().lock();
-            getProperties().store(new FileWriter(getFullFilePath()), getComment());
+            getProperties().store(fileWriter, getComment());
         } catch (IOException ioException) {
             throw new RuntimeException(ioException);
         } finally {
@@ -96,12 +114,10 @@ public class LocalDB extends LocalDatabase implements ILocalDB, Serializable, Cl
 
     @Override
     public Boolean rollback() {
-        getWriteLock().lock();
         Properties temp = getTempProperties();
         setTempProperties(getProperties());
         setProperties(temp);
         commit();
-        getWriteLock().unlock();
         return true;
     }
 

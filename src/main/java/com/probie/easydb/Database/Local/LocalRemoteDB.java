@@ -39,7 +39,7 @@ public class LocalRemoteDB extends LocalDatabase implements ILocalRemoteDB, Seri
     public Boolean connect() {
         try {
             return connect(new InputStreamReader(new FileInputStream(getFullFilePath()), StandardCharsets.UTF_8));
-        } catch (FileNotFoundException ignored) {}
+        } catch (IOException ignored) {}
         return false;
     }
 
@@ -50,6 +50,11 @@ public class LocalRemoteDB extends LocalDatabase implements ILocalRemoteDB, Seri
                 return load(inputStream);
             }
         }
+        if (inputStream != null) {
+            try {
+                inputStream.close();
+            } catch (IOException ignored) {}
+        }
         return true;
     }
 
@@ -59,6 +64,11 @@ public class LocalRemoteDB extends LocalDatabase implements ILocalRemoteDB, Seri
             if (getPropertiesMap().get(getSynFullFilePath()) == null) {
                 return load(inputStreamReader);
             }
+        }
+        if (inputStreamReader != null) {
+            try {
+                inputStreamReader.close();
+            } catch (IOException ignored) {}
         }
         return true;
     }
@@ -75,11 +85,16 @@ public class LocalRemoteDB extends LocalDatabase implements ILocalRemoteDB, Seri
     public Boolean load(InputStream inputStream) {
         try {
             getReadLock().lock();
-            getProperties().load(new InputStreamReader(new FileInputStream(getFullFilePath()), StandardCharsets.UTF_8));
+            getProperties().load(inputStream);
             setIsConnection(true);
         } catch (IOException ignored) {
 
         } finally {
+            if (inputStream != null) {
+                try {
+                    inputStream.close();
+                } catch (IOException ignored) {}
+            }
             getReadLock().unlock();
         }
         return getIsConnection();
@@ -94,6 +109,11 @@ public class LocalRemoteDB extends LocalDatabase implements ILocalRemoteDB, Seri
         } catch (IOException ignored) {
 
         } finally {
+            if (inputStreamReader != null) {
+                try {
+                    inputStreamReader.close();
+                } catch (IOException ignored) {}
+            }
             getReadLock().unlock();
         }
         return new File(getFullFilePath()).exists();
@@ -102,9 +122,9 @@ public class LocalRemoteDB extends LocalDatabase implements ILocalRemoteDB, Seri
     @Override
     public Boolean commit() {
         setTempProperties(getProperties());
-        try {
+        try (FileWriter fileWriter = new FileWriter(getFullFilePath())) {
             getWriteLock().lock();
-            getProperties().store(new FileWriter(getFullFilePath()), getComment());
+            getProperties().store(fileWriter, getComment());
         } catch (IOException ioException) {
             throw new RuntimeException(ioException);
         } finally {
@@ -115,12 +135,10 @@ public class LocalRemoteDB extends LocalDatabase implements ILocalRemoteDB, Seri
 
     @Override
     public Boolean rollback() {
-        getWriteLock().lock();
         Properties temp = getTempProperties();
         setTempProperties(getProperties());
         setProperties(temp);
         commit();
-        getWriteLock().unlock();
         return true;
     }
 
