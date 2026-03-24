@@ -163,7 +163,7 @@ Add the following dependency to your Maven project:
 <dependency>
     <groupId>com.github.BProbie</groupId>
     <artifactId>EasyDB</artifactId>
-    <version>2.7</version>
+    <version>least</version>
 </dependency>
 ```
 
