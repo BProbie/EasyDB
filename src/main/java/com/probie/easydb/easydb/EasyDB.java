@@ -7,7 +7,7 @@ import com.probie.easydb.database.remote.RemoteDatabaseFactory;
 public class EasyDB implements IEasyDB {
 
     private final String NAME = "EasyDB";
-    private final String VERSION = "v3.0.0";
+    private final String VERSION = "3.0.0";
 
     private volatile static EasyDB INSTANCE;
 
